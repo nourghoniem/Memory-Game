@@ -14,6 +14,8 @@ Include sound effects when clicking a card
 Store the score in the local storage
 </pre>
 # Other Options (we could add when we finish):
+<pre>
 *Change background theme (choose one of the 4 elements)
 *Could add animation
 *Two players
+</pre>
