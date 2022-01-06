@@ -87,7 +87,13 @@ function levels(){
 buttons.forEach(button => button.addEventListener("click",  levels))
 function checking(){
   if(typeof(cards) !== "undefined"){
+    let get = document.querySelectorAll(".memory-card")
     cards.forEach(card => card.addEventListener("click", flipCard))
+    //shuffle
+    cards.forEach(card => {
+      let random = Math.floor(Math.random() * get.length)
+      card.style.order = random;
+    })
   }
   else{
     setTimeout(checking, 1000);
@@ -136,6 +142,5 @@ function unflipCards(){
       console.log("you won!!");
     }
  }
-
 
 checking();
