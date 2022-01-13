@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards Game</title>
+    <link rel="stylesheet" href="Game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</head>
+<body>
+
+        <div class="popup_reloadScreen">  <!-- Main Container Div -->
+            <div class="input_playerData">
+                <h2>Player Name</h2>
+                <input type="text" name="Player" class="player_DataName" placeholder="Enter Your Name" maxlength="30">
+                <div class="LevelsOf_Game">
+                    <span class="LevelStages" id="LevelOne">Level 1</span>
+                    <span class="LevelStages" id="LevelTwo">Level 2</span>
+                    <span class="LevelStages" id="LevelThree">Level 3</span>
+                </div>
+            </div>
+            <div class="popup_StartButton">
+                <button class="startPlayBTN">Start Game</button>
+            </div>
+        </div>
+
+<div class="ListContainer">
+        <div class="ScoreListContainer">
+            <div class="highScoreTitle">
+                <h2>High Scores</h2>
+            </div>
+            <div class="listOfScores">
+                <span class="NoDataMessage">No Scores Yet</span>
+                <!-- <span class="dataBox">
+                    Data One
+                    <span class="NumericalScore">200000</span>
+                </span>
+                <span class="dataBox">
+                    Data Two
+                    <span class="NumericalScore">100000</span>
+                </span> -->
+            </div>
+            <div class="scoreBottomOk">
+                <button class="OkBtn">Ok</button>
+            </div>
+        </div>
+</div>
+        <script src="Game.js"></script>
+</body>
+</html>
