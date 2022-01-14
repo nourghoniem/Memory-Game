@@ -114,6 +114,7 @@ function Theme() {
       frontCard[i].style.backgroundColor = "rgba(20,20,180,0.9)";
     }
   } else {
+    document.body.style.backgroundImage = "url('./img/gifImage2.gif')";
     document.body.style.backgroundColor = "#fff8dc";
     for (var i = 0; i < backCard.length; i++) {
       backCard[i].style.backgroundColor = "#FFFFFF";
