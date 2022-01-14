@@ -122,7 +122,7 @@ function Theme() {
     }
     
   } else {
-    document.body.style.backgroundImage = "url('./img/gifImage2.gif')";
+    document.body.style.backgroundImage = "url('./img/bg_7_photos_v2_x4.jpg')";
     document.body.style.backgroundColor = "#fff8dc";
     for (var i = 0; i < backCard.length; i++) {
       backCard[i].style.backgroundColor = "#FFFFFF";
@@ -143,7 +143,7 @@ function addCards() {
     back_img = document.createElement("img");
     front_img.setAttribute("class", "front-face");
     back_img.setAttribute("class", "back-face");
-    back_img.setAttribute("src", "img/crystal.png");
+    back_img.setAttribute("src", "img/mushroom.png");
     div.appendChild(front_img);
     div.appendChild(back_img);
     front_images.push(front_img);
@@ -161,13 +161,14 @@ function addCards() {
 
 function mediumLevel() {
   addCards();
-  document.getElementById("game-container").style.paddingTop = "60px";
+  document.getElementById("game-container").style.top = "50px";
+  //document.getElementById("game-container").style.paddingTop = "60px";
 }
 
 function hardLevel() {
   addCards();
   addCards();
-
+  let game_count = document.getElementsByClassName("memory-card");
   for (var i = 4; i < 6; i++) {
     divs[i].setAttribute("data-framework", "water");
     front_images[i].setAttribute("src", "img/water.png");
@@ -176,7 +177,13 @@ function hardLevel() {
     divs[i].setAttribute("data-framework", "fall");
     front_images[i].setAttribute("src", "img/fall.png");
   }
-  document.getElementById("game-container").style.paddingTop = "10px";
+  //document.getElementById("game-container").style.paddingTop = "10px";
+   document.getElementById("game-container").style.top = "10px";
+   document.getElementById("game-container").style.width = "720px";
+   for(var i=0; i< game_count.length; i++){
+     game_count[i].style.width = "170px";
+     game_count[i].style.height = "160px";
+   }
 }
 
 let timer;
@@ -309,12 +316,12 @@ function checkIfWon() {
     let getCards = document.querySelectorAll(".memory-card");
     if (getFlipped.length == getCards.length) {
       wonFlag = true;
-      console.log("you won!!");
+    
       if (checkBox.checked == true) {
         adio.pause();
         winningSoundEffect.play();
         setTimeout(playBkMusic, 5000);
-        // matchSoundEffect.play();
+        matchSoundEffect.play();
         
       } else {
         winningSoundEffect.play();
@@ -338,6 +345,8 @@ function updateCountdown() {
       console.log("You won at the last second!");
     }
     clearInterval(timer);
+    //lost
+    cards.forEach(card => card.removeEventListener("click", flipCard));
     if (checkBox.checked == true) {
       adio.pause();
       losingSoundeffect.play();
@@ -356,7 +365,7 @@ function updateCountdown() {
       document.getElementById("countdown").style.color = "firebrick";
     }
     countEl.innerHTML = `${minutes}:${seconds}`;
-    liveScore.innerHTML = `${score}`;
+    liveScore.innerHTML = `Score:  ${score}`;
 
   }
   --time;

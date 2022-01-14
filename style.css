@@ -8,8 +8,10 @@
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   height: 100vh;
-  background-color: cornsilk;
-  overflow: scroll;
+  /* background-color: cornsilk; */
+  overflow: hidden;
+  background-size: cover;
+  background-image: url("img/bg_7_photos_v2_x4.jpg");
 }
 
 /* =========================================== Splash Screen  ==================================================== */
@@ -386,45 +388,57 @@ a {
 /* ======================================= Game Styling ======================================================= */
 
 .memory-game-container {
-  width: 820px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding-top: 150px;
-  perspective: 1000px;
+    width: 840px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 0px;
+    perspective: 1000px;
+    position: relative;
+    top:150px;
+    border: solid 5px greenyellow;
+    box-shadow:  0 0 30px greenyellow;
+    border-radius: 20px;
+    animation: mymove 10s infinite;
+    padding: 5px;
+}
+@keyframes mymove {
+  50% {box-shadow:  0 0 80px greenyellow; }
 }
 .memory-card {
   width: 200px;
-  height: 180px;
-  /* border: 2px solid greenyellow; */
-  position: relative;
-  align-items: flex-start;
-  max-height: 180px;
-  margin-left: 4px;
-  margin-top: 3px;
-  box-shadow: 2px indigo;
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-  /*padding-top: 20px;*/
+    height:180px;
+    /* border: 2px solid greenyellow; */
+    position: relative;
+    align-items: flex-start;
+    max-height: 180px;
+    margin-left:4px;
+    margin-top:3px;
+    box-shadow: 2px indigo;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    padding-bottom: 10px;
+    /* z-index: 10; */
+    /*padding-top: 20px;*/
 }
 .memory-card.flip {
   transform: rotateY(180deg);
 }
 .memory-card:active {
   transform: scale(0.97);
-  transition: transform 0.2s;
+  /* transition: transform 0.2s; */
 }
 .front-face,
 .back-face {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  padding: 20px;
-  /* border: 2px solid blue;  */
-  border-radius: 10px;
-  backface-visibility: hidden;
-  background-color: white;
+    height: 100%;
+    position: absolute;
+    padding: 40px;
+    /* border: 2px solid blue;  */
+    border-radius: 10px;
+    backface-visibility: hidden;
+    background-color: white;
 }
 .front-face {
   transform: rotateY(180deg);
@@ -441,12 +455,13 @@ a {
   display: inline;
   align-items: center;
   justify-content: center;
-  color: steelblue;
+  color: white;
   margin: 0;
   width: 200px;
   height: 70px;
   font-size: 50px;
   position: absolute;
+  margin-top: 5px;
 }
 
 #score_ {
@@ -454,12 +469,25 @@ a {
   display: inline;
   align-items: center;
   justify-content: center;
-  color: steelblue;
+  color: white;
+  background: orangered;
+  border-radius: 30px;
+  opacity: 0.8;
   margin: 0;
   width: 200px;
-  height: 70px;
-  font-size: 50px;
+  height: 50px;
+  font-size: 30px;
   margin-top: 70px;
   position: absolute;
+  border: 3px solid orangered;
+  box-shadow:  0 0 30px orangered;
+  left: 50px;
+  top: -45px;
+  padding-left: 10px;
+  padding-top: 2px;
+  animation: score_shadow 10s linear infinite;
+}
+@keyframes score_shadow {
+  50% {box-shadow:  0 0 80px orangered; }
 }
 
