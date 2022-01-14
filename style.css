@@ -448,3 +448,18 @@ a {
   font-size: 50px;
   position: absolute;
 }
+
+#score_ {
+  /* display: inline-flex;  */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: steelblue;
+  margin: 0;
+  width: 200px;
+  height: 70px;
+  font-size: 50px;
+  margin-top: 70px;
+  position: absolute;
+}
+

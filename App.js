@@ -48,6 +48,10 @@ let StartingMinutes = 0.5;
 let time = StartingMinutes * 60; // get time in sec.
 let wonFlag = false;
 const countEl = document.getElementById("countdown");
+const liveScore = document.getElementById("score_");
+
+let value = true;
+
 
 let inputSection = document.querySelector(".input_playerData input"); // Player Input Element getting His Name
 let StartBtn = document.querySelector(".popup_StartButton button"); // Start Button Element
@@ -98,6 +102,9 @@ let playMusic = function () {
   }
 };
 
+
+
+
 //Sound Effect
 
 // Theme Effect
@@ -113,6 +120,7 @@ function Theme() {
       backCard[i].style.backgroundColor = "rgba(20,20,180,0.2)";
       frontCard[i].style.backgroundColor = "rgba(20,20,180,0.9)";
     }
+    
   } else {
     document.body.style.backgroundImage = "url('./img/gifImage2.gif')";
     document.body.style.backgroundColor = "#fff8dc";
@@ -172,6 +180,7 @@ function hardLevel() {
 }
 
 let timer;
+let displayScore;
 var cards;
 function levels() {
   //cards_container.style.display="flex";
@@ -242,6 +251,7 @@ function flipCard() {
   }
 }
 
+
 function checkForMatch() {
   let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
   if (isMatch) {
@@ -249,7 +259,7 @@ function checkForMatch() {
     if (checkBox.checked == true) {
       adio.pause();
       matchSoundEffect.play();
-      adio.play();
+      setTimeout(playBkMusic, 2500);
     } else {
       matchSoundEffect.play();
     }
@@ -285,6 +295,14 @@ function resetBoard(){
    [firstCard, secondCard] = [null, null];
  }
 
+ function reloadWindow() {
+  location.reload()
+}
+
+function playBkMusic(){
+  adio.play();
+}
+
 function checkIfWon() {
   if (wonFlag == false) {
     let getFlipped = document.querySelectorAll(".flip");
@@ -293,11 +311,17 @@ function checkIfWon() {
       wonFlag = true;
       console.log("you won!!");
       if (checkBox.checked == true) {
-        winningSoundEffect.pause();
-        matchSoundEffect.play();
+        adio.pause();
         winningSoundEffect.play();
+        setTimeout(playBkMusic, 5000);
+        // matchSoundEffect.play();
+        
       } else {
         winningSoundEffect.play();
+      }
+      value = true;
+      if(value){
+        setTimeout(reloadWindow, 12000)
       }
     }
   }
@@ -314,14 +338,14 @@ function updateCountdown() {
       console.log("You won at the last second!");
     }
     clearInterval(timer);
-    console.log("lost");
     if (checkBox.checked == true) {
-      losingSoundeffect.pause();
-      matchSoundEffect.play();
+      adio.pause();
       losingSoundeffect.play();
+      setTimeout(playBkMusic,3600)
     } else {
       losingSoundeffect.play();
     }
+  setTimeout(reloadWindow, 12000)
   } else {
     if (ifWon) {
       clearInterval(timer);
@@ -332,6 +356,8 @@ function updateCountdown() {
       document.getElementById("countdown").style.color = "firebrick";
     }
     countEl.innerHTML = `${minutes}:${seconds}`;
+    liveScore.innerHTML = `${score}`;
+
   }
   --time;
 }
