@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: black;
+                margin: 0;
+            }
+            p{
+                background-color: white;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: steelblue;
+                /* color: teal; */
+                margin: 0;
+                width: 200px;
+                height: 70px;
+                font-size: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="countdown"></p>
+
+
+        <script>
+            const StartingMinutes=0.5;
+            // get time in sec.
+            let time = StartingMinutes * 60;
+            const countEl=document.getElementById("countdown");
+
+            // call the function every second to update the time
+            setInterval(updateCountdown, 1000);
+
+            function updateCountdown(){
+                const minutes = Math.floor(time/60);
+                let seconds = time % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                if(seconds==0 & minutes==0){
+                    alert('done')
+                }
+                else{
+                countEl.innerHTML=`${minutes}:${seconds}`
+                time--;}
+            }
+        </script>
+    </body>
+</html>
