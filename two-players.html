@@ -5,6 +5,7 @@
     <title>Memory Game</title>
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="two-players.css">
+    <link rel="stylesheet" href="fireflies.css">
 </head>
 <body>
   
@@ -16,73 +17,83 @@
         <button class="btn" onclick="this.disabled=true" id="btn_2" type="button">Medium</button>
         <button class="btn" onclick="this.disabled=true" id="btn_3" type="button">Hard</button>
     </div> 
+    <div class="glow">
+        <span style="--g:1;"></span>
+        <span style="--g:2;"></span>
+        <span style="--g:3;"></span>
+        <span style="--g:4;"></span>
+        <span style="--g:5;"></span>
+        <span style="--g:6;"></span>
+        <span style="--g:7;"></span>
+        <span style="--g:8;"></span>
+  </div>
     <section id="game-container" class="memory-game-container">
       <div id="player1_board">
         <div class="memory-card" data-framework="flames">
-            <img class="front-face" src="images/flames.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/flames.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="flames">
-            <img class="front-face" src="images/flames.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/flames.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="leaf">
-            <img class="front-face" src="images/leaf.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/leaf.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="leaf">
-            <img class="front-face" src="images/leaf.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/leaf.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="wind">
-            <img class="front-face" src="images/wind.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/wind.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="wind">
-            <img class="front-face" src="images/wind.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/wind.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="snow-flake">
-            <img class="front-face" src="images/snow-flake.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/snow-flake.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         <div class="memory-card" data-framework="snow-flake">
-            <img class="front-face" src="images/snow-flake.png" alt="front face">
-            <img class="back-face" src="images/crystal.png" alt="back face">
+            <img class="front-face" src="img/snow-flake.png" alt="front face">
+            <img class="back-face" src="img/mushroom.png" alt="back face">
         </div>
         </div>
         <div id="player2_board">
             <div class="memory-card" data-framework="flames">
-                <img class="front-face" src="images/flames.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/flames.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="flames">
-                <img class="front-face" src="images/flames.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/flames.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="leaf">
-                <img class="front-face" src="images/leaf.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/leaf.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="leaf">
-                <img class="front-face" src="images/leaf.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/leaf.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="wind">
-                <img class="front-face" src="images/wind.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/wind.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="wind">
-                <img class="front-face" src="images/wind.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/wind.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="snow-flake">
-                <img class="front-face" src="images/snow-flake.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/snow-flake.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             <div class="memory-card" data-framework="snow-flake">
-                <img class="front-face" src="images/snow-flake.png" alt="front face">
-                <img class="back-face" src="images/crystal.png" alt="back face">
+                <img class="front-face" src="img/snow-flake.png" alt="front face">
+                <img class="back-face" src="img/mushroom.png" alt="back face">
             </div>
             </div>
             

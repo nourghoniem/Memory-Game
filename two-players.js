@@ -48,8 +48,8 @@ function addCards(){
     back_img.setAttribute("class","back-face");
     front_img_p2.setAttribute("class","front-face");
     back_img_p2.setAttribute("class","back-face");
-    back_img.setAttribute("src","images/crystal.png");
-    back_img_p2.setAttribute("src","images/crystal.png");
+    back_img.setAttribute("src","img/mushroom.png");
+    back_img_p2.setAttribute("src","img/mushroom.png");
     div.appendChild(front_img);
     div.appendChild(back_img);
     divp2.appendChild(front_img_p2);
@@ -61,15 +61,15 @@ function addCards(){
    }
    for(var i=0; i<2; i++){
      divs[i].setAttribute("data-framework","flame")
-     front_images[i].setAttribute("src","images/flame.png");
+     front_images[i].setAttribute("src","img/flame.png");
      divs_p2[i].setAttribute("data-framework","flame")
-     front_images_p2[i].setAttribute("src","images/flame.png");
+     front_images_p2[i].setAttribute("src","img/flame.png");
    }
    for(var i=2; i<4; i++){
      divs[i].setAttribute("data-framework","plant")
-     front_images[i].setAttribute("src","images/plant.png");
+     front_images[i].setAttribute("src","img/plant.png");
      divs_p2[i].setAttribute("data-framework","plant")
-     front_images_p2[i].setAttribute("src","images/plant.png");
+     front_images_p2[i].setAttribute("src","img/plant.png");
    }
 }
 
@@ -84,15 +84,15 @@ function hardLevel(){
 
    for(var i=4; i<6; i++){
     divs[i].setAttribute("data-framework","water")
-    front_images[i].setAttribute("src","images/water.png");
+    front_images[i].setAttribute("src","img/water.png");
     divs_p2[i].setAttribute("data-framework","water")
-    front_images_p2[i].setAttribute("src","images/water.png");
+    front_images_p2[i].setAttribute("src","img/water.png");
    }
    for(var i=6; i<8; i++){
     divs[i].setAttribute("data-framework","fall")
-    front_images[i].setAttribute("src","images/fall.png");
+    front_images[i].setAttribute("src","img/fall.png");
     divs_p2[i].setAttribute("data-framework","fall")
-    front_images_p2[i].setAttribute("src","images/fall.png");
+    front_images_p2[i].setAttribute("src","img/fall.png");
    }
    document.getElementById("game-container").style.paddingTop = "10px";
 }
