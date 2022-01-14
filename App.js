@@ -207,7 +207,7 @@ function levels() {
     }
     timer = setInterval(updateCountdown, 1000);
   }
-  checkIfFired = false;
+  //checkIfFired = false;
   cards = get_cards;
 }
 buttons.forEach((button) => button.addEventListener("click", levels));
@@ -266,6 +266,7 @@ function checkForMatch() {
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
+  resetBoard();
 }
 
 function unflipCards() {
@@ -273,9 +274,15 @@ function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove("flip");
     secondCard.classList.remove("flip");
-    lockBoard = false;
+    //lockBoard = false;
+    resetBoard();
   }, 1500);
 }
+
+function resetBoard(){
+   [hasFlippedCard, lockBoard] = [false, false];
+   [firstCard, secondCard] = [null, null];
+ }
 
 function checkIfWon() {
   if (wonFlag == false) {
@@ -328,7 +335,7 @@ function updateCountdown() {
   --time;
 }
 
-
+checking();
 /************************************ Set Player Data in Array ********************************************/
 function setPlayerData(playerName) {
   let savedData = {
@@ -440,4 +447,3 @@ StartBtn.addEventListener("click", StartGameBtn);
 listScoreBtn.addEventListener("click", listScoreBtneffect);
 
 
-checking();
