@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel="stylesheet" href="two-players.css">
+</head>
+<body>
+  
+    <div class="timer">
+        <p id="countdown"></p>
+    </div>
+    <div class="btn_container">
+        <button class="btn" onclick="this.disabled=true" id="btn_1" type="button">Easy</button>
+        <button class="btn" onclick="this.disabled=true" id="btn_2" type="button">Medium</button>
+        <button class="btn" onclick="this.disabled=true" id="btn_3" type="button">Hard</button>
+    </div> 
+    <section id="game-container" class="memory-game-container">
+      <div id="player1_board">
+        <div class="memory-card" data-framework="flames">
+            <img class="front-face" src="images/flames.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="flames">
+            <img class="front-face" src="images/flames.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="leaf">
+            <img class="front-face" src="images/leaf.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="leaf">
+            <img class="front-face" src="images/leaf.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="wind">
+            <img class="front-face" src="images/wind.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="wind">
+            <img class="front-face" src="images/wind.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="snow-flake">
+            <img class="front-face" src="images/snow-flake.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        <div class="memory-card" data-framework="snow-flake">
+            <img class="front-face" src="images/snow-flake.png" alt="front face">
+            <img class="back-face" src="images/crystal.png" alt="back face">
+        </div>
+        </div>
+        <div id="player2_board">
+            <div class="memory-card" data-framework="flames">
+                <img class="front-face" src="images/flames.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="flames">
+                <img class="front-face" src="images/flames.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="leaf">
+                <img class="front-face" src="images/leaf.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="leaf">
+                <img class="front-face" src="images/leaf.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="wind">
+                <img class="front-face" src="images/wind.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="wind">
+                <img class="front-face" src="images/wind.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="snow-flake">
+                <img class="front-face" src="images/snow-flake.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="snow-flake">
+                <img class="front-face" src="images/snow-flake.png" alt="front face">
+                <img class="back-face" src="images/crystal.png" alt="back face">
+            </div>
+            </div>
+            
+        
+        
+    </section>
+    
+     <script src="two-players.js"></script>
+    
+</body>
+</html>
