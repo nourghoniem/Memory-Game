@@ -16,6 +16,8 @@ let sound_1 = document.getElementById("soundEffectbtn");
 let matchSoundEffect = document.getElementById("matchCard");
 let winningSoundEffect = document.getElementById("winningSound");
 let losingSoundeffect = document.getElementById("losingSound");
+let checkSound = document.getElementById("soundbtn");
+
 
 //score part
 const eLevel = 25;
@@ -63,24 +65,39 @@ let ArrOfAddedData = [];
 
 startGameMenu.addEventListener("click", function () {
   catchStart.style.display = "inline-block";
-  sound_1.play();
+  if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
 });
 scoreMenu.addEventListener("click", function () {
   catchScore.style.display = "inline-block";
-  sound_1.play();
+  if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
 });
 howtoplayMenu.addEventListener("click", function () {
   catchHowToPlay.style.display = "inline-block";
-  sound_1.play();
+  if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
 });
 settingsMenu.addEventListener("click", function () {
   catchSettings.style.display = "inline-block";
-  sound_1.play();
+  if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
 });
 backButtons.forEach((element) => {
   element.addEventListener("click", () => {
     element.parentElement.style.display = "none";
+    if(checkSound.checked == true)
+  {
     sound_1.play();
+  }
   });
 });
 
@@ -114,14 +131,13 @@ const frontCard = document.getElementsByClassName("front-face");
 let theme = document.getElementById("changeTheme");
 function Theme() {
   if (theme.checked == true) {
-    document.body.style.backgroundImage = "url('./img/gifImage.gif')";
+    document.body.style.backgroundImage = "url('./img/darkTheme.png')";
     //  document.body.style.backgroundColor = "#000000";
     for (var i = 0; i < backCard.length; i++) {
-      backCard[i].style.backgroundColor = "rgba(20,20,180,0.2)";
-      frontCard[i].style.backgroundColor = "rgba(20,20,180,0.9)";
+      backCard[i].style.backgroundColor = "rgba(20,20,20,0.2)";
+      frontCard[i].style.backgroundColor = "rgba(20,20,20,0.9)";
     }
-    
-  } else {
+   } else {
     document.body.style.backgroundImage = "url('./img/bg_7_photos_v2_x4.jpg')";
     document.body.style.backgroundColor = "#fff8dc";
     for (var i = 0; i < backCard.length; i++) {
