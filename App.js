@@ -579,9 +579,9 @@ var f;
 
         let myInterval;
         let var14 = 1;
-        const box = document.querySelector('.box');
+        const box = document.querySelector('.button');
         box.addEventListener('click', (e)=>{
-          e.target.classList.toggle('pause');
+          e.target.classList.toggle('paused');
           var14+=1;
           console.log(var14)
           if(var14%2 == 0){
