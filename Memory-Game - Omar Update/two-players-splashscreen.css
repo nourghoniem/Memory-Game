@@ -1,0 +1,473 @@
+/* =========================================== Splash Screen  ==================================================== */
+/* =========================================== Splash Screen Main Menu ============================================ */
+.control-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: #121212;
+    background-image: url(img/splash.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .gradient{
+      background: linear-gradient(90deg, rgba(243, 72, 104,1) 20.328125854333244%,rgba(242, 71, 104,1) 20.328125854333244%,rgba(158, 0, 236,1) 80.32812823851904%);
+      position: absolute; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: multiply;
+  }
+  .text::before{
+      content: 'Memory Game';
+      position: absolute;
+      mix-blend-mode: difference;
+      filter: blur(2px);
+  }
+  
+  .neon_wrapper{
+      display: inline-flex;
+      background: linear-gradient(90deg, rgba(243, 72, 104,1) 20.328125854333244%,rgba(242, 71, 104,1) 20.328125854333244%,rgba(158, 0, 236,1) 80.32812823851904%);
+      opacity: 0.7;
+      filter: blur(70px) brightness(300%);
+  }
+  
+  .glow{
+      position: relative;
+      width: 1500px;
+      height: 300px;
+      top: 450px;
+  }
+  .glow span{
+      position: absolute;
+      top: calc(0px * var(--g));
+      bottom: calc(20px * var(--g));
+      left: calc(10px * var(--g));
+      right: calc(50px * var(--g));
+  }
+  
+  .glow span:before{
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: -8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: yellowgreen;
+  }
+  .glow span:nth-child(1):before{
+      background: yellowgreen;
+      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
+  }
+  .glow span:nth-child(2):before{
+      background: yellowgreen;
+      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
+  }
+  .glow span:nth-child(3):before{
+      background: yellowgreen;
+      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
+  }
+  .glow span:nth-child(4):before{
+      background: yellowgreen;
+      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
+  }
+  .glow span:nth-child(5):before{
+      background: yellowgreen;
+      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
+  }
+  @keyframes animate
+  {
+      0%{ transform: rotate(30deg) translateX(1000px); }
+  }
+  @keyframes animate1
+  {
+      0% { transform: translateY(100px) translateX(1000px); }
+  }
+  @keyframes animate2
+  {
+      0% { transform: translateX(1000px) translateY(500px); }
+  
+  }
+  @keyframes animate3
+  {
+      0%  {   transform: translateY(1000px); }
+      50% {   transform: translateX(1000px); }
+  }
+  @keyframes animate4
+  {
+      0% {    transform: translateX(1000px); }
+  }
+  
+  .glow span:nth-child(1){
+      animation: animate 50s alternate infinite;
+  }
+  .glow span:nth-child(2){
+      animation: animate1 50s alternate infinite;
+  }
+  .glow span:nth-child(3){
+      animation: animate2 50s alternate infinite;
+  }
+  .glow span:nth-child(4){
+      animation: animate3 50s alternate infinite;
+  }
+  .glow span:nth-child(5){
+      animation: animate4 50s alternate infinite;
+  }
+  
+  
+  
+  
+  .splash-menu {
+    position: absolute;
+    /* display: inline-block; */
+    display: inline-block;
+    top: 27vh;
+    left: 35vw;
+    /* background-color: #189ab4; */
+    width: 30vw;
+    height: 70vh;
+    font-family: cursive;
+    font-size: 24 px;
+    padding: 2%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .control-buttons {
+    display: inline-block;
+    padding: 3% 6%;
+    margin: 5% 5%;
+    width: 70%;
+    text-align: center;
+    border: 2px none #3f4652;
+    color: white;
+    /* background-color: #05445e; */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    animation: glowkey 0.5s ease-in-out infinite alternate;
+  }
+  @keyframes glowkey {
+      from {
+        text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #0E670D, 0 0 12px #0E670D, 0 0 15px #0E670D, 0 0 18px #0E670D, 0 0 21px #0E670D;
+      }
+      
+      to {
+        text-shadow: 0 0 5px #fff, 0 0 8px #50AB4D, 0 0 12px #50AB4D, 0 0 15px #50AB4D, 0 0 18px #50AB4D, 0 0 21px #50AB4D, 0 0 24px #50AB4D;
+      }
+  }
+  .control-buttons:hover {
+    background-color: #9cf181;
+    box-shadow: 0px 0px 10px #9cf181, 0px 0px 30px #9cf181, 0px 0px 70px #9cf181;
+    animation: shine 250ms;
+  }
+  @keyframes shine {
+      0% {
+        background: linear-gradient( 30deg, hsl(260, 85%, 95%) 0%, hslhsl(219, 60%, 55%) 25%);
+      }
+    
+      25% {
+        background: linear-gradient( 30deg, hsl(219, 60%, 55%) 0%, hsl(260, 85%, 95%) 25%, hsl(219, 60%, 55%) 50%);
+      }
+    
+      50% {
+        background: linear-gradient( 30deg, hsl(219, 60%, 55%) 0%, hsl(260, 85%, 95%) 50%, hsl(219, 60%, 55%) 75%); 
+      }
+    
+      75% {
+        background: linear-gradient( 30deg, hsl(219, 60%, 55%) 0%, hsl(260, 85%, 95%) 75%, hsl(219, 60%, 55%) 100%); 
+      }
+    
+      100% {
+        background: linear-gradient( 30deg, hsl(219, 60%, 55%) 0%, hsl(260, 85%, 95%) 100%); 
+      }
+    }
+  .control-buttons:active {
+    font-size: 20px;
+    box-shadow: -3px -3px rgb(61, 59, 59);
+    transform: translateY(-2px);
+  }
+  .control-buttons.back-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    width: 30%;
+  }
+  .fas.fa-backward {
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    font-size: 16px;
+  }
+  /* =========================================== Splash Screen Select number of players Menu ============================================ */
+  .splash-menu.no-ofplayers-menu {
+      position: absolute;
+      display: none;
+      top: 27vh;
+      left: 35vw;
+      color: white;
+  }
+  /* =========================================== Splash Screen Select level Menu ============================================ */
+  .splash-menu.LevelsOf_Game-menu {
+      position: absolute;
+      display: none;
+      top: 27vh;
+      left: 35vw;
+      color: white;
+  }
+  /* =========================================== Splash Screen Start Game Menu ============================================ */
+  
+  .splash-menu.startgame-menu {
+    position: absolute;
+    display: none;
+    top: 27vh;
+    left: 35vw;
+    color: white;
+  }
+  .input_playerData {
+    width: 100%;
+    height: 28vh;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .input_playerData h2 {
+    font-family: cursive;
+    margin: 0% 0%;
+    padding: 5% 0%;
+    font-size: 25px;
+    color: white;
+  }
+  .LevelsOf_Game {
+    width: 100%;
+    margin: 2% 0%;
+    height: 6vh;
+    position: absolute;
+    left: 2%;
+  }
+  
+  .input_playerData .player_DataName {
+    width: 80%;
+    padding: 3% 5%;
+    border-radius: 15px;
+    font-family: "Bakbak One";
+    font-size: 20px;
+    text-align: center;
+  }
+  .control-buttons.startPlayBTN {
+    width: 40%;
+    font-size: 25px;
+    font-family: cursive;
+    margin: 3.5% 0%;
+    padding: 3% 0%;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    bottom: 2%;
+    left: 32.5%;
+    overflow: hidden;
+  }
+  /* =========================================== Splash Screen - Score Menu ============================================ */
+  
+  .splash-menu.score-menu {
+    position: absolute;
+    /* display: inline-block; */
+    display: none;
+    top: 27vh;
+    left: 35vw;
+    color: white;
+    text-decoration: underline;
+  }
+  .control-buttons.score-buttons {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  /****************************** Score List **********************************************/
+  
+  .ListContainer {
+    height: 100vh;
+    margin: 0 0;
+    width: 100%;
+    background-color: #04662d24;
+  }
+  
+  .ScoreListContainer {
+    position: absolute;
+    margin: 5% 30%;
+    width: 40%;
+    background-color: #967dc287;
+    border-radius: 15px 15px 0px 0px;
+  }
+  
+  .highScoreTitle {
+    text-align: center;
+    background-color: coral;
+    font-family: "Lobster", cursive;
+    font-size: 3vh;
+    border-radius: 15px 15px 0px 0px;
+  }
+  
+  .ScoreListContainer .listOfScores {
+    padding: 2%;
+    background-color: gainsboro;
+  }
+  .ScoreListContainer .listOfScores span {
+    display: block;
+    background-color: white;
+    padding: 2% 2%;
+  }
+  
+  .ScoreListContainer .listOfScores .NoDataMessage {
+    display: block;
+    background-color: white;
+    padding: 2% 2%;
+    color: navy;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    margin: 0% 0% 2% 0%;
+  }
+  
+  .ScoreListContainer .listOfScores .dataBox {
+    font-size: 20px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: bold;
+  }
+  
+  .ScoreListContainer .listOfScores .dataBox .NumericalScore {
+    position: relative;
+    bottom: 6px;
+    float: right;
+    background-color: #e91e63;
+    color: white;
+    padding: 1% 2%;
+    border-radius: 5px;
+    margin: 0% 1%;
+  }
+  
+  .ScoreListContainer .listOfScores .dataBox:not(:last-child) {
+    margin-bottom: 2%;
+  }
+  
+  .scoreBottomOk {
+    margin: 3% 40%;
+  }
+  
+  .scoreBottomOk .OkBtn {
+    width: 90%;
+    height: 5vh;
+    font-family: "Lobster";
+    font-size: 25px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff008e, #ffff00f2, #4c00ff80);
+  }
+  
+  /* =========================================== Splash Screen - How to Play Menu ============================================ */
+  
+  .splash-menu.howto-menu {
+    position: absolute;
+    /* display: inline-block; */
+    display: none;
+    top: 27vh;
+    left: 35vw;
+    color: white;
+    text-decoration: underline;
+  }
+  
+  /* =========================================== Splash Screen - Settings Menu ============================================ */
+  
+  .splash-menu.settings-menu {
+    position: absolute;
+    /* display: inline-block; */
+    display: none;
+    top: 27vh;
+    left: 35vw;
+    color: white;
+    /* text-decoration:underline; */
+  }
+  
+  .settings-table,
+  tr,
+  th {
+    /* border: 1px solid black; */
+    width: 95%;
+    position: relative;
+    overflow: hidden;
+    font-size: 24px;
+  }
+  .setting {
+    width: 180px;
+    height: 40px;
+  }
+  .switch {
+    display: inline-block;
+    text-align: left;
+    width: 95%;
+    height: 90%;
+    margin: 0 10px;
+  }
+  .switch input {
+    display: none;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 12%;
+    left: 30%;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 30px;
+    width: 72px;
+    height: 32px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    top: 11%;
+    left: 8%;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 65px;
+    width: 25px;
+    height: 25px;
+  }
+  input:checked + .slider {
+    background-color: #48ff00;
+  }
+  input:checked + .slider:before {
+    transform: translateX(140%);
+  }
+  
+  .fas.fa-volume-up,
+  .fas.fa-moon {
+    position: absolute;
+    font-size: 29px;
+    top: 20%;
+    left: 75%;
+  }
+  .fas.fa-volume-mute,
+  .fas.fa-sun,
+  .fas.fa-envelope {
+    position: absolute;
+    font-size: 29px;
+    top: 20%;
+    left: 8%;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  #Support {
+    position: absolute;
+    top: 20%;
+    left: 28%;
+  }

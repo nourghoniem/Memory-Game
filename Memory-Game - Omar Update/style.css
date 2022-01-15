@@ -1,0 +1,82 @@
+/* =========================================== Genral ============================================ */
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: 100vh;
+  background-color: cornsilk;
+  overflow:auto;
+}
+
+/* =========================================== Splash Screen  ==================================================== */
+/* =========================================== Splash Screen Main Menu ============================================ */
+/* =========================================== The Game ============================================ */
+/* ======================================= Game Styling ======================================================= */
+
+.memory-game-container {
+  width: 820px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding-top: 150px;
+  perspective: 1000px;
+}
+.memory-card {
+  width: 200px;
+  height: 180px;
+  /* border: 2px solid greenyellow; */
+  position: relative;
+  align-items: flex-start;
+  max-height: 180px;
+  margin-left: 4px;
+  margin-top: 3px;
+  box-shadow: 2px indigo;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  /*padding-top: 20px;*/
+}
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 20px;
+  /* border: 2px solid blue;  */
+  border-radius: 10px;
+  backface-visibility: hidden;
+  background-color: white;
+}
+.front-face {
+  transform: rotateY(180deg);
+}
+.timer,
+#countdown {
+  position: relative;
+  left: 85%;
+  display: inline-block;
+}
+
+#countdown {
+  /* display: inline-flex;  */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: steelblue;
+  margin: 0;
+  width: 200px;
+  height: 70px;
+  font-size: 50px;
+  position: absolute;
+}
