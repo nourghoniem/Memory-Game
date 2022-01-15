@@ -61,8 +61,6 @@ let playerScore = document.querySelector(".listOfScores");
 let scoreMainList = document.querySelector(".ListContainer");
 let listScoreBtn = document.querySelector(".scoreBottomOk button");
 
-let ArrOfAddedData = [];
-
 startGameMenu.addEventListener("click", function () {
   catchStart.style.display = "inline-block";
   if(checkSound.checked == true)
@@ -101,11 +99,123 @@ backButtons.forEach((element) => {
   });
 });
 
-// Start the Game (Display the splash screen)
-start.addEventListener("click", () => {
-  allSplash.style.display = "none";
-});
+/***************************************************************************************************************************************************************/
 
+/************************************ Set Player Data in Array ********************************************/
+let ArrOfAddedData = [];
+function setPlayerData(playerName) {
+  let savedData = {
+    id: Date.now(),
+    text: playerName,
+    score: 0,
+  };
+  ArrOfAddedData.push(savedData);
+  console.log(ArrOfAddedData);
+}
+/***************************************** Save Data in Array From localstorge even After Reload *******************************/
+if (localStorage.key(0) != null) {
+  for (let i = 0; i < localStorage.length; i++) {
+    ArrOfAddedData[i] = {
+      id: parseInt(localStorage.key(i)),
+      text: JSON.parse(localStorage.getItem(localStorage.key(i)))[0],
+      score: JSON.parse(localStorage.getItem(localStorage.key(i)))[1],
+    };
+
+  }
+  console.log(ArrOfAddedData);
+  ArrOfAddedData.sort(function(a,b){
+    return b.score-a.score;
+
+  })
+  console.log(ArrOfAddedData);
+  for(let i=0 ; i<ArrOfAddedData.length;i++)
+  {
+    if (ArrOfAddedData[i].score >= 0) {
+      let InitMessage2 = document.querySelector(".NoDataMessage");
+
+      if (document.body.contains(document.querySelector(".NoDataMessage"))) {
+        InitMessage2.remove();
+      }
+
+      let playerSpan = document.createElement("span");
+      let textComp = document.createTextNode(ArrOfAddedData[i].text);
+      playerSpan.setAttribute("id", ArrOfAddedData[i].id);
+      playerSpan.appendChild(textComp);
+      playerSpan.className = "dataBox";
+
+      let scoreeData = document.createElement("span");
+      let textScore = document.createTextNode(ArrOfAddedData[i].score);
+      scoreeData.appendChild(textScore);
+      scoreeData.className = "NumericalScore";
+
+      playerSpan.appendChild(scoreeData);
+      playerScore.appendChild(playerSpan);
+    }
+  }
+}
+/**************************** Delete From Array *****************************/
+function deleteDataWith(DataID) {
+  ArrOfAddedData = ArrOfAddedData.filter(function deleteFromArray(f) {
+    return f.id != DataID;
+  });
+}
+
+/*****************************************************************************************************************************************************************/
+// Start the Game (Display the splash screen)
+
+  let namenow;
+  let finalScore;
+start.addEventListener("click", () => {
+  let repeatedName = 0;
+
+  if (inputSection.value === "") {
+    Swal.fire(
+      `You Didn't Enter Your Name`,
+      "Please Enter Your Name First!",
+      "error"
+    );
+  } else {
+    for (let i = 0; i < ArrOfAddedData.length; i++) {
+      if (ArrOfAddedData[i].text == inputSection.value) {
+        repeatedName = 1;
+        Swal.fire({
+          title:
+            "You entered Duplicated Name do you want to resume or New Start",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Resume",
+          denyButtonText: `New Start`,
+          icon: "warning",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire("Resumed", "", "success");
+            namenow=inputSection.value;
+            console.log(JSON.parse(localStorage.getItem(localStorage.key(i)))[1]);
+            allSplash.style.display = "none";
+          } else if (result.isDenied) {
+            Swal.fire("You Shold Enter New Name", "", "info");
+            deleteDataWith(localStorage.key(i));
+            localStorage.removeItem(localStorage.key(i));
+          }
+        });
+        break;
+      }
+    }
+    if (!repeatedName) {
+      setPlayerData(inputSection.value);
+      namenow=inputSection.value;
+      inputSection.value = "";
+      ArrOfAddedData.forEach((savedData) => {
+        if (savedData.score == 0) {
+          localStorage.setItem(savedData.id,JSON.stringify([savedData.text, savedData.score]));
+        }
+      });
+      allSplash.style.display = "none";
+    }
+  }
+});
+/****************************************************************************************************************************************************************/
 // Background Music Effect
 let adio = document.getElementById("myAudio");
 let checkBox = document.getElementById("audio_setting");
@@ -288,7 +398,23 @@ function checkForMatch() {
       matchSoundEffect.play();
     }
     flipNumbers++;
+
+    /*********************************************************************************************************************************/
+
     score = flipNumbers * initValue;
+
+    for(let i=0;i<ArrOfAddedData.length;i++)
+    {
+      if( ArrOfAddedData[i].text == namenow && ArrOfAddedData[i].score <=score )
+      {
+        ArrOfAddedData[i].score=score; 
+        console.log(namenow);
+      }
+      localStorage.setItem(ArrOfAddedData[i].id,JSON.stringify([ArrOfAddedData[i].text, ArrOfAddedData[i].score]));
+    }
+    
+    /**********************************************************************************************************************************/
+  
     console.log("Correct Numbers= ", flipNumbers);
     console.log("Score During the Game= ", score);
   } else {
@@ -393,115 +519,6 @@ function updateCountdown() {
 }
 
 checking();
-/************************************ Set Player Data in Array ********************************************/
-function setPlayerData(playerName) {
-  let savedData = {
-    id: Date.now(),
-    text: playerName,
-    score: 380,
-  };
-  ArrOfAddedData.push(savedData);
-  console.log(ArrOfAddedData);
-}
-/***************************************** Save Data in Array From localstorge even After Reload *******************************/
-if (localStorage.key(0) != null) {
-  for (let i = 0; i < localStorage.length; i++) {
-    ArrOfAddedData[i] = {
-      id: parseInt(localStorage.key(i)),
-      text: JSON.parse(localStorage.getItem(localStorage.key(i)))[0],
-      score: JSON.parse(localStorage.getItem(localStorage.key(i)))[1],
-    };
-    if (ArrOfAddedData[i].score >= 0) {
-      let InitMessage2 = document.querySelector(".NoDataMessage");
-
-      if (document.body.contains(document.querySelector(".NoDataMessage"))) {
-        InitMessage2.remove();
-      }
-
-      let playerSpan = document.createElement("span");
-      let textComp = document.createTextNode(ArrOfAddedData[i].text);
-      playerSpan.setAttribute("id", ArrOfAddedData[i].id);
-      playerSpan.appendChild(textComp);
-      playerSpan.className = "dataBox";
-
-      let scoreeData = document.createElement("span");
-      let textScore = document.createTextNode(ArrOfAddedData[i].score);
-      scoreeData.appendChild(textScore);
-      scoreeData.className = "NumericalScore";
-
-      playerSpan.appendChild(scoreeData);
-      playerScore.appendChild(playerSpan);
-    }
-  }
-}
-/**************************** Delete From Array *****************************/
-function deleteDataWith(DataID) {
-  ArrOfAddedData = ArrOfAddedData.filter(function deleteFromArray(f) {
-    return f.id != DataID;
-  });
-}
-/*********************************************** When Press Start The Game ****************************/
-function StartGameBtn() {
-  let repeatedName = 0;
-
-  if (inputSection.value === "") {
-    Swal.fire(
-      `You Didn't Enter Your Name`,
-      "Please Enter Your Name First!",
-      "error"
-    );
-  } else {
-    for (let i = 0; i < ArrOfAddedData.length; i++) {
-      if (ArrOfAddedData[i].text == inputSection.value) {
-        repeatedName = 1;
-        Swal.fire({
-          title:
-            "You entered Duplicated Name do you want to resume or New Start",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Resume",
-          denyButtonText: `New Start`,
-          icon: "warning",
-        }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
-          if (result.isConfirmed) {
-            Swal.fire("Resumed", "", "success");
-            console.log(JSON.parse(localStorage.getItem(localStorage.key(i)))[1]);
-          } else if (result.isDenied) {
-            Swal.fire("You Shold Enter New Name", "", "info");
-            deleteDataWith(localStorage.key(i));
-            localStorage.removeItem(localStorage.key(i))[0];
-          }
-        });
-        break;
-      }
-    }
-    if (!repeatedName) {
-      setPlayerData(inputSection.value);
-      inputSection.value = "";
-      ArrOfAddedData.forEach((savedData) => {
-        if (savedData.score == 380) {
-          localStorage.setItem(
-            savedData.id,
-            JSON.stringify([savedData.text, savedData.score])
-          );
-          console.log(savedData.text);
-        }
-      });
-      // startGameDiv.style.display = "none";
-      scoreMainList.style.display = "inline-block";
-    }
-  }
-}
-/******************** When Press Ok on The Score list Ok Button it will disappear ******************************************/
-function listScoreBtneffect() {
-  scoreMainList.style.display = "none";
-  // startGameDiv.style.display = "inline-block";
-}
-/****************************************** Events ************************************************************************/
-StartBtn.addEventListener("click", StartGameBtn);
-
-listScoreBtn.addEventListener("click", listScoreBtneffect);
 
 
 //how to play (slider)

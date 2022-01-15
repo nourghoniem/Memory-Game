@@ -206,7 +206,7 @@ body {
 
 .ListContainer {
   height: 100vh;
-  margin: 0 0;
+  margin: 0px -41%;
   width: 100%;
   background-color: #04662d24;
 }
@@ -214,7 +214,7 @@ body {
 .ScoreListContainer {
   position: absolute;
   margin: 5% 30%;
-  width: 40%;
+  width: 100%;
   background-color: #967dc287;
   border-radius: 15px 15px 0px 0px;
 }
@@ -233,7 +233,7 @@ body {
 }
 .ScoreListContainer .listOfScores span {
   display: block;
-  background-color: white;
+  background-color: rgb(54, 52, 48);
   padding: 2% 2%;
 }
 
@@ -252,12 +252,13 @@ body {
 .ScoreListContainer .listOfScores .dataBox {
   font-size: 20px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: left;
   font-weight: bold;
 }
 
 .ScoreListContainer .listOfScores .dataBox .NumericalScore {
   position: relative;
-  bottom: 6px;
+  bottom: 3px;
   float: right;
   background-color: #e91e63;
   color: white;
@@ -274,14 +275,14 @@ body {
   margin: 3% 40%;
 }
 
-.scoreBottomOk .OkBtn {
+/* .scoreBottomOk .OkBtn {
   width: 90%;
   height: 5vh;
   font-family: "Lobster";
   font-size: 25px;
   font-weight: bold;
   background: linear-gradient(45deg, #ff008e, #ffff00f2, #4c00ff80);
-}
+} */
 
 /* =========================================== Splash Screen - How to Play Menu ============================================ */
 
