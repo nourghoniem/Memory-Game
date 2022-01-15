@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <title>Memory Game</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="fireflies.css" />
+        <link rel="stylesheet" href="splashstyle.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+        <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&family=Be+Vietnam+Pro:wght@500&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/ea098c5036.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="control-menu">
+            <!-- <img id="gamelogo"src="img/logo.png" alt="logo"> -->
+            <div id="gamelogo">
+                <span class="logotxt">Memory</span><br>
+                <span class="logotxt">Game</span>
+            </div>
+            <div class="neon_wrapper">
+                <pre class="text">Memory Game</pre>
+                <span class="gradient"></span>
+            </div> 
+            <span id="title">Memory Game</span>
+            <div class="start_button">
+                <h1>
+                </h1>
+            </div>
+            <div class ="start"><h1 id="strtext">Star<span class="last">t</span></h1></div>
+            <div class = "splash-menu no-ofplayers-menu">
+                <span class="control-buttons no-ofplayers-button">Single Player</span>
+                <a class="control-buttons no-ofplayers-button" href="two-players.html" target="_top">Multi Player</a>
+                    <!-- Multi Player</span> -->
+            </div> 
+            <div class="glow">
+                <span style="--g:1;"></span>
+                <span style="--g:2;"></span>
+                <span style="--g:3;"></span>
+                <span style="--g:4;"></span>
+                <span style="--g:5;"></span>
+                <span style="--g:6;"></span>
+                <span style="--g:7;"></span>
+                <span style="--g:8;"></span>
+          </div>
+            <div class="splash-menu" name="main menu">
+                <span class="control-buttons strgame-button" >Start Game</span>
+                <span class="control-buttons scr-button" >Score</span>
+                <span class="control-buttons htp-button">How to Play</span>
+                <span class="control-buttons stg-button" >Settings</span>
+                <span class="control-buttons" onclick = "window.close();">Exit</span>
+            </div>
+            <div class="splash-menu LevelsOf_Game-menu">
+                <span class="control-buttons LevelStages" id ="easy">Easy</span>
+                <span class="control-buttons LevelStages" id ="medium">Medium</span>
+                <span class="control-buttons LevelStages" id ="hard">Hard</span>
+                <span class="control-buttons back-button" ><i class="fas fa-backward"></i>Back</span>
+            </div>
+            <div class="splash-menu startgame-menu">
+                <div class="input_playerData">
+                    <h2>Player Name</h2>
+                    <input type="text" name="Player" class="player_DataName" placeholder="Enter Your Name" maxlength="30">
+                </div>
+                <div class="popup_StartButton">
+                    <span class="control-buttons startPlayBTN">Start Game</span>
+                </div>
+                <!-- <span class="control-buttons back-button"><i class="fas fa-backward"></i>Back</span> -->
+            </div>
+            <div class="splash-menu score-menu">
+                <h2>Score List</h2>
+                <span class="control-buttons score-buttons">Clear</span>
+                <div class="ListContainer">
+                    <div class="ScoreListContainer">
+                        <div class="highScoreTitle">
+                            <h2>High Scores</h2>
+                        </div>
+                        <div class="listOfScores">
+                            <span class="NoDataMessage">No Scores Yet</span>
+                            <!-- <span class="dataBox">
+                                Data One
+                                <span class="NumericalScore">200000</span>
+                            </span>
+                            <span class="dataBox">
+                                Data Two
+                                <span class="NumericalScore">100000</span>
+                            </span> -->
+                        </div>
+                        <div class="scoreBottomOk">
+                            <button class="OkBtn">Ok</button>
+                        </div>
+                    </div>
+            </div>
+                <span class="control-buttons back-button"><i class="fas fa-backward"></i>Back</span>
+            </div>
+            <div class="splash-menu howto-menu">
+                <h2>How to Play</h2>
+                <span class="control-buttons back-button" ><i class="fas fa-backward"></i>Back</span>
+            </div>
+            <div class="splash-menu settings-menu">
+                <h2 style="margin-bottom: 5px;">Settings</h2>
+                <table class="settings-table">
+                    <tr>
+                    <th>Sound</th>
+                    <th colspan="2">
+                    <div class="setting">
+                        <label class="switch"><i class='fas fa-volume-up'></i>
+                            <input type="checkbox" id = "soundbtn" checked>
+                            <span class="slider"></span><i class='fas fa-volume-mute'></i>
+                        </label>
+                    </div>
+                    </th>
+                    </tr>
+                    <tr>
+                    <th>Music</th>
+                    <th colspan="2">
+                    <div class="setting">
+                        <label class="switch"><i class='fas fa-volume-up'></i>
+                            <input type="checkbox" unchecked  class="hidden" id="audio_setting" onclick = "playMusic()">
+                            <span class="slider"></span><i class='fas fa-volume-mute'></i>
+                        </label>
+                    </div>
+                    </th>
+                    </tr>
+                    <tr>
+                    <th>Theme</th>
+                    <th colspan="2">
+                    <div class="setting">
+                        <label class="switch"><i class="fas fa-moon"></i>
+                            <input type="checkbox" class="hidden" id="changeTheme" onclick = "Theme()" unchecked>
+                            <span class="slider"></span><i class="fas fa-sun"></i>
+                        </label>
+                    </div>
+                    </th>
+                    </tr>
+                    <tr>
+                    <th>Support</th>
+                    <th colspan="2">
+                    <div class="setting">
+                        <label class="switch"><i class="fas fa-envelope"></i>
+                        <a id="Support" href="http://www.iti.gov.eg/">Contact Us</a> 
+                        </label>
+                    </div>
+                    </th>
+                    </tr>
+                </table>
+                <span class="control-buttons back-button"><i class="fas fa-backward"></i>Back</span>
+            </div>
+        </div>
+        <div class="timer">
+            <p id="countdown"></p>
+        </div>
+        <section id="game-container" class="memory-game-container">
+            <div class="memory-card" data-framework="flames">
+                <img class="front-face" src="img/flames.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="flames">
+                <img class="front-face" src="img/flames.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="leaf">
+                <img class="front-face" src="img/leaf.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="leaf">
+                <img class="front-face" src="img/leaf.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="wind">
+                <img class="front-face" src="img/wind.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="wind">
+                <img class="front-face" src="img/wind.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="snow-flake">
+                <img class="front-face" src="img/snow-flake.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+            <div class="memory-card" data-framework="snow-flake">
+                <img class="front-face" src="img/snow-flake.png" alt="front face">
+                <img class="back-face" src="img/crystal.png" alt="back face">
+            </div>
+        </section>
+        <!-- for background music -->
+        <audio id = "myAudio" class = "hiddenMusic"  loop>
+            <source src="audio/1.mp3" type="audio/mpeg" id = "music1">
+        </audio>
+        <!-- for sound effect button -->
+        <audio id = "soundEffectbtn" class = "hiddenMusic">
+            <source src="audio/buttonSoundEffect.wav" type="audio/wav" id = "music1">
+        </audio>
+        <!-- for winning sound -->
+        <audio id = "winningSound" class = "hiddenMusic">
+            <source src="audio/winning.mp3" type="audio/mpeg" id = "music1">
+        </audio>
+         <!-- for lose sound -->
+        <audio id = "losingSound" class = "hiddenMusic">
+            <source src="audio/losing.mp3" type="audio/mpeg" id = "music1">
+        </audio>
+        <!-- for match cards -->
+        <audio id = "matchCard" class = "hiddenMusic">
+            <source src="audio/match.mp3" type="audio/mpeg" id = "music1">
+        </audio>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="App.js"></script>
+    </body>
+</html>
