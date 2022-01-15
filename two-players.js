@@ -27,8 +27,25 @@ let time = StartingMinutes * 60;  // get time in sec.
 let wonFlag = false;
 const countEl=document.getElementById("countdown");
 let checkPlayersTurn = false;
+
+//score part
+//Constant part <depends on level>
+const eLevel = 25;
+const mLevel = 30;
+const hLevel = 50;
+//Depends on player <player1,2>
+let scoreP1 = 0;
+let scoreP2 = 0;
+let flipNumbersP1 = 0;
+let flipNumbersP2 = 0;
+let initValue = 0;
+
+
 let player1_frame = document.getElementById("player1_board");
 let player2_frame = document.getElementById("player2_board");
+
+
+
 
 function addCards(){
   for(var i = 0; i < 4; i++){
@@ -104,12 +121,20 @@ function levels(){
     //cards_container.style.display="flex";
     if(checkIfFired == false){
          checkIfFired = true;
+         scoreP1 = 0;
+         flipNumbersP1 = 0;
+         scoreP2 = 0;
+         flipNumbersP2 = 0;
+         initValue = eLevel;
+         console.log("Constant= " + initValue);
          if(this.id == hard.id){
             //when clicking the hard button
             StartingMinutes = 1;
             time = StartingMinutes * 60;
             hardLevel();
             console.log("click event from hard");
+            initValue = hLevel;
+            console.log("Constant= " + initValue);
          }
          if(this.id == medium.id){
             //when clicking the medium button
@@ -117,6 +142,8 @@ function levels(){
             time = StartingMinutes * 60;
             mediumLevel();
             console.log("click event from medium");
+            initValue = mLevel;
+            console.log("Constant= " + initValue);
          }
          if(checkIfFired==true){
             console.log("Hello is fired")
@@ -166,7 +193,7 @@ function flipCard(){
   else{
     checkPlayersTurn = true;
     secondCard = this;
-    checkForMatch();
+    checkForMatchP1();
     console.log("two cards flipped");
     console.log(checkPlayersTurn);
   }
@@ -198,7 +225,7 @@ function flipCard_p2(){
       //hasFlippedCard = false;
       checkPlayersTurn = false;
       secondCard = this;
-      checkForMatch();
+      checkForMatchP2();
       console.log("two cards flipped");
       console.log(checkPlayersTurn);
     }
@@ -220,15 +247,47 @@ function flipCard_p2(){
     checkPlayersTurn = false;
   }
 
-function checkForMatch(){
+function checkForMatchP1(){
   let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-  isMatch ?  disableCards() :  unflipCards();
-  // if(isMatch){
-  //     disableCards();
-  // }
-  // else{
-  //     unflipCards();
-  // }
+  if (isMatch) {
+    disableCards();
+    // if (checkBox.checked == true) {
+    //   adio.pause();
+    //   matchSoundEffect.play();
+    //   setTimeout(playBkMusic, 2500);
+    // } else {
+    //   matchSoundEffect.play();
+    // }
+    flipNumbersP1++;
+    scoreP1 = flipNumbersP1 * initValue;
+    console.log("Correct Numbers Player 1= ", flipNumbersP1);
+    console.log("Score During the Game P1= ", scoreP1);
+  } else {
+    unflipCards();
+  }
+  // isMatch ?  disableCards() :  unflipCards();
+  checkIfWon();
+}
+
+function checkForMatchP2(){
+  let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+  if (isMatch) {
+    disableCards();
+    // if (checkBox.checked == true) {
+    //   adio.pause();
+    //   matchSoundEffect.play();
+    //   setTimeout(playBkMusic, 2500);
+    // } else {
+    //   matchSoundEffect.play();
+    // }
+    flipNumbersP2++;
+    scoreP2 = flipNumbersP1 * initValue;
+    console.log("Correct Numbers Player 2= ", flipNumbersP1);
+    console.log("Score During the Game P2= ", scoreP2);
+  } else {
+    unflipCards();
+  }
+  // isMatch ?  disableCards() :  unflipCards();
   checkIfWon();
 }
 
@@ -262,12 +321,35 @@ function unflipCards(){
     if(getFlipped.length == getCards.length ){
        wonFlag = true;
        console.log("Player 1 won the game");
+      //  if (checkBox.checked == true) {
+      //   adio.pause();
+      //   winningSoundEffect.play();
+      //   setTimeout(playBkMusic, 5000);
+      //   matchSoundEffect.play();
+        
+      // } else {
+      //   winningSoundEffect.play();
+        
+      // }
     }
     else if(getFlipped_p2.length == getCards_p2.length){
         wonFlag = true;
         console.log("Player 2 won the game");
+        if (checkBox.checked == true) {
+          adio.pause();
+          winningSoundEffect.play();
+          setTimeout(playBkMusic, 5000);
+          matchSoundEffect.play();
+        }
+        else {
+          winningSoundEffect.play();
+        }
+        } 
     }
-   }
+  //   else{
+  //     console.log("no one win the game");
+  //   }
+  //  }
    return wonFlag;
  }
 
