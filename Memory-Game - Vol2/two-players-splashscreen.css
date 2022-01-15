@@ -174,7 +174,8 @@
     left: 2%;
   }
   
-  .input_playerData .player_DataName {
+
+  .input_playerData .playerOne_DataName, .input_playerData .playerTwo_DataName {
     width: 80%;
     padding: 3% 5%;
     border-radius: 15px;

@@ -46,11 +46,174 @@ let flipNumbersP1 = 0;
 let flipNumbersP2 = 0;
 let initValue = 0;
 
+/***************************************************************************************************************************************************************/
 
+let inputoneSection = document.querySelector(".input_playerData .playerOne_DataName");
+let inputtwoSection = document.querySelector(".input_playerData .playerTwo_DataName"); // Player Input Element getting His Name
+let StartBtn = document.querySelector(".popup_StartButton button"); // Start Button Element
+let playerScore = document.querySelector(".listOfScores");
+let scoreMainList = document.querySelector(".ListContainer");
+let listScoreBtn = document.querySelector(".scoreBottomOk button");
+
+/************************************ Set Player Data in Array ********************************************/
+let ArrOfAddedData = [];
+function setPlayerData(playerName) {
+  let savedData = {
+    id: Date.now(),
+    text: playerName,
+    score: 0,
+  };
+  ArrOfAddedData.push(savedData);
+  console.log(ArrOfAddedData);
+}
+/***************************************** Save Data in Array From localstorge even After Reload *******************************/
+if (localStorage.key(0) != null) {
+  for (let i = 0; i < localStorage.length; i++) {
+    ArrOfAddedData[i] = {
+      id: parseInt(localStorage.key(i)),
+      text: JSON.parse(localStorage.getItem(localStorage.key(i)))[0],
+      score: JSON.parse(localStorage.getItem(localStorage.key(i)))[1],
+    };
+
+  }
+  console.log(ArrOfAddedData);
+  ArrOfAddedData.sort(function(a,b){
+    return b.score-a.score;
+
+  })
+  console.log(ArrOfAddedData);
+  for(let i=0 ; i<ArrOfAddedData.length;i++)
+  {
+    if (ArrOfAddedData[i].score >= 0) {
+      let InitMessage2 = document.querySelector(".NoDataMessage");
+
+      if (document.body.contains(document.querySelector(".NoDataMessage"))) {
+        InitMessage2.remove();
+      }
+
+      let playerSpan = document.createElement("span");
+      let textComp = document.createTextNode(ArrOfAddedData[i].text);
+      playerSpan.setAttribute("id", ArrOfAddedData[i].id);
+      playerSpan.appendChild(textComp);
+      playerSpan.className = "dataBox";
+
+      let scoreeData = document.createElement("span");
+      let textScore = document.createTextNode(ArrOfAddedData[i].score);
+      scoreeData.appendChild(textScore);
+      scoreeData.className = "NumericalScore";
+
+      playerSpan.appendChild(scoreeData);
+      playerScore.appendChild(playerSpan);
+    }
+  }
+}
+/**************************** Delete From Array *****************************/
+function deleteDataWith(DataID) {
+  ArrOfAddedData = ArrOfAddedData.filter(function deleteFromArray(f) {
+    return f.id != DataID;
+  });
+}
+/**************************************************************************************************************/
+
+let PlayerOne;
+let PlayerTwo;
 start_btn.addEventListener("click", function(e) {
-  timer = setInterval(updateCountdown, 1000);
-})
+  let repeatedName1 = 0;
+  let repeatedName2= 0;
+  if (inputoneSection.value === "") {
+    Swal.fire(
+      `You Didn't Enter Your Name`,
+      "Please Enter Your Name First!",
+      "error"
+    );
+  } else {
+    for (let i = 0; i < ArrOfAddedData.length; i++) {
+      if (ArrOfAddedData[i].text == inputoneSection.value) {
+        repeatedName1 = 1;
+        Swal.fire({
+          title:
+            "You entered Duplicated Name do you want to resume or New Start",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Resume",
+          denyButtonText: `New Start`,
+          icon: "warning",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire("Resumed", "", "success");
+            PlayerOne=inputoneSection.value;
+            console.log(JSON.parse(localStorage.getItem(localStorage.key(i)))[1]);
+            timer = setInterval(updateCountdown, 1000);
+          } else if (result.isDenied) {
+            Swal.fire("You Shold Enter New Name", "", "info");
+            deleteDataWith(localStorage.key(i));
+            localStorage.removeItem(localStorage.key(i));
+          }
+        });
+        break;
+      }
+    }
+    if (!repeatedName1) {
+      setPlayerData(inputoneSection.value);
+      PlayerOne=inputoneSection.value;
+      inputoneSection.value = "";
+      ArrOfAddedData.forEach((savedData) => {
+        if (savedData.score == 0) {
+          localStorage.setItem(savedData.id,JSON.stringify([savedData.text, savedData.score]));
+        }
+      });
+      timer = setInterval(updateCountdown, 1000);
+    }
+  }
 
+  if (inputtwoSection.value === "") {
+    Swal.fire(
+      `You Didn't Enter Your Name`,
+      "Please Enter Your Name First!",
+      "error"
+    );
+  } else {
+    for (let i = 0; i < ArrOfAddedData.length; i++) {
+      if (ArrOfAddedData[i].text == inputtwoSection.value) {
+        repeatedName2 = 1;
+        Swal.fire({
+          title:
+            "You entered Duplicated Name do you want to resume or New Start",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Resume",
+          denyButtonText: `New Start`,
+          icon: "warning",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire("Resumed", "", "success");
+            PlayerTwo=inputtwoSection.value;
+            console.log(JSON.parse(localStorage.getItem(localStorage.key(i)))[1]);
+            timer = setInterval(updateCountdown, 1000);
+          } else if (result.isDenied) {
+            Swal.fire("You Shold Enter New Name", "", "info");
+            deleteDataWith(localStorage.key(i));
+            localStorage.removeItem(localStorage.key(i));
+          }
+        });
+        break;
+      }
+    }
+    if (!repeatedName2) {
+      setPlayerData(inputtwoSection.value);
+      PlayerTwo=inputtwoSection.value;
+      inputoneSection.value = "";
+      ArrOfAddedData.forEach((savedData) => {
+        if (savedData.score == 0) {
+          localStorage.setItem(savedData.id,JSON.stringify([savedData.text, savedData.score]));
+        }
+      });
+      timer = setInterval(updateCountdown, 1000);
+    }
+  }
+})
 function addCards(){
   for(var i = 0; i < 4; i++){
     div = document.createElement("div");
@@ -290,7 +453,21 @@ function flipCard_p2(){
       //   matchSoundEffect.play();
       // }
       flipNumbersP1++;
-      scoreP1 = flipNumbersP1 * initValue;
+
+    /**********************************************************************************************************************/
+
+    scoreP1 = flipNumbersP1 * initValue;
+    for(let i=0;i<ArrOfAddedData.length;i++)
+    {
+      if( ArrOfAddedData[i].text == PlayerOne && ArrOfAddedData[i].score <=scoreP1 )
+      {
+        ArrOfAddedData[i].score=scoreP1; 
+        console.log(PlayerOne);
+      }
+      localStorage.setItem(ArrOfAddedData[i].id,JSON.stringify([ArrOfAddedData[i].text, ArrOfAddedData[i].score]));
+    }
+
+    /**********************************************************************************************************************/
       console.log("Correct Numbers Player 1= ", flipNumbersP1);
       console.log("Score During the Game P1= ", scoreP1);
     } else {
@@ -312,7 +489,18 @@ function flipCard_p2(){
       //   matchSoundEffect.play();
       // }
       flipNumbersP2++;
-      scoreP2 = flipNumbersP2 * initValue;
+    /*************************************************************************************************************************/
+    scoreP2 = flipNumbersP2 * initValue;
+    for(let i=0;i<ArrOfAddedData.length;i++)
+    {
+      if( ArrOfAddedData[i].text == PlayerTwo && ArrOfAddedData[i].score <=scoreP2 )
+      {
+        ArrOfAddedData[i].score=scoreP2; 
+        console.log(PlayerTwo);
+      }
+      localStorage.setItem(ArrOfAddedData[i].id,JSON.stringify([ArrOfAddedData[i].text, ArrOfAddedData[i].score]));
+    }
+  /***************************************************************************************************************************/
       console.log("Correct Numbers Player 2= ", flipNumbersP2);
       console.log("Score During the Game P2= ", scoreP2);
     } else {
