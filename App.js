@@ -247,6 +247,7 @@ function checking() {
 
 function flipCard() {
   if (lockBoard) return;
+  if(this === firstCard) return;
   this.classList.toggle("flip");
   if (!hasFlippedCard) {
     hasFlippedCard = true;
@@ -346,6 +347,8 @@ function updateCountdown() {
     }
     clearInterval(timer);
     //lost
+    document.getElementById("lost").style.display = "inline";
+
     cards.forEach(card => card.removeEventListener("click", flipCard));
     if (checkBox.checked == true) {
       adio.pause();

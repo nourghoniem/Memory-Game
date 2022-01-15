@@ -490,4 +490,16 @@ a {
 @keyframes score_shadow {
   50% {box-shadow:  0 0 80px orangered; }
 }
-
+#lost{
+  background-color: orangered;
+  opacity: 0.7;
+  border: 2px solid orangered;
+  border-radius: 25px;
+  display: none;
+  position: relative;
+  left: 600px;
+  color: white;
+  padding :100px;
+  bottom: 100px;
+  width: 40%;
+}
