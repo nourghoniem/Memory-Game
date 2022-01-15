@@ -281,7 +281,7 @@ function checkForMatchP2(){
     //   matchSoundEffect.play();
     // }
     flipNumbersP2++;
-    scoreP2 = flipNumbersP1 * initValue;
+    scoreP2 = flipNumbersP2 * initValue;
     console.log("Correct Numbers Player 2= ", flipNumbersP1);
     console.log("Score During the Game P2= ", scoreP2);
   } else {
