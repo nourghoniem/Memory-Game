@@ -503,3 +503,93 @@ a {
   bottom: 100px;
   width: 40%;
 }
+#lost{
+  background-color: firebrick;
+  text-align: center;
+  opacity: 0.9;
+  border: solid 3px black;
+  border-radius: 25px;
+  display: none;
+  position: absolute;
+  left: 400px;
+  color: white;
+  font-family: "Lobster";
+  font-size: 28px;
+  padding :20px;
+  bottom: 200px;
+  width: 40%;
+  box-shadow:  0 0 30px black;
+  animation: lost 10s infinite;
+}
+@keyframes lost {
+  50% {box-shadow:  0 0 80px black; }
+}
+#lost_title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #fafafa;
+  font-size: 24px;
+  font-weight: bold;
+  /* font-style: italic; */
+}
+#redirect_text{
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#won{
+  background-color: teal;
+  text-align: center;
+  opacity: 0.9;
+  border: solid 3px turquoise;
+  border-radius: 25px;
+  display: none;
+  position: absolute;
+  left: 400px;
+  color: white;
+  font-family: "Sofia";
+  font-size: 28px;
+  padding :20px;
+  bottom: 200px;
+  width: 40%;
+  box-shadow:  0 0 30px turquoise;
+  animation: won 10s infinite;
+}
+@keyframes won {
+  50% {box-shadow:  0 0 80px turquoise; }
+}
+#won_title{
+  font-family: "Sofia";
+  color: #fafafa;
+  font-size: 26px;
+  font-weight: bold;
+  /* font-style: italic; */
+}
+
+#won_lastMinute{
+  background-color: rgb(207, 207, 25);
+  text-align: center;
+  opacity: 0.9;
+  border: solid 3px yellow;
+  border-radius: 25px;
+  display: none;
+  position: absolute;
+  left: 400px;
+  color: white;
+  font-family: "Sofia";
+  font-size: 28px;
+  padding :20px;
+  bottom: 150px;
+  width: 40%;
+  box-shadow:  0 0 30px yellow;
+  animation: won_LastMin 10s infinite;
+}
+@keyframes won_LastMin {
+  50% {box-shadow:  0 0 80px yellow; }
+}
+#won_lastMinute_title{
+  font-family: "Sofia";
+  color: #fafafa;
+  font-size: 26px;
+  font-weight: bold;
+}

@@ -342,13 +342,11 @@ function updateCountdown() {
   let seconds = time % 60;
   if ((seconds == 0) & (minutes == 0)) {
     countEl.innerHTML = `0:00`;
-    if (ifWon) {
-      console.log("You won at the last second!");
-    }
     clearInterval(timer);
+    winningSoundEffect.pause();
     //lost
     document.getElementById("lost").style.display = "inline";
-
+    
     cards.forEach(card => card.removeEventListener("click", flipCard));
     if (checkBox.checked == true) {
       adio.pause();
@@ -361,7 +359,11 @@ function updateCountdown() {
   } else {
     if (ifWon) {
       clearInterval(timer);
+      if ((seconds == 1) & (minutes == 0)){
+        document.getElementById("won_lastMinute").style.display = "inline";}
+      else{
       console.log("you won!!");
+      document.getElementById("won").style.display = "inline";}
     }
     seconds = seconds < 10 ? "0" + seconds : seconds;
     if (seconds < 10 && minutes == 0) {
