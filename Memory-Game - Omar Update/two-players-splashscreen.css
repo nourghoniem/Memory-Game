@@ -1,16 +1,26 @@
 /* =========================================== Splash Screen  ==================================================== */
 /* =========================================== Splash Screen Main Menu ============================================ */
 .control-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2;
-    background-color: #121212;
-    background-image: url(img/splash.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: #121212;
+  background-image: url(img/jungle.jpg);
+  background-repeat: no-repeat;
+  overflow: hidden; 
+  background-size: cover; background-position: center top;
+  }
+  .text{
+    color: white;
+    /* background-color: black; */
+    left: 30px;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: Arial;
+    text-transform: uppercase;
   }
   
   .gradient{
@@ -36,92 +46,6 @@
       filter: blur(70px) brightness(300%);
   }
   
-  .glow{
-      position: relative;
-      width: 1500px;
-      height: 300px;
-      top: 450px;
-  }
-  .glow span{
-      position: absolute;
-      top: calc(0px * var(--g));
-      bottom: calc(20px * var(--g));
-      left: calc(10px * var(--g));
-      right: calc(50px * var(--g));
-  }
-  
-  .glow span:before{
-      content: " ";
-      position: absolute;
-      top: 50%;
-      left: -8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: yellowgreen;
-  }
-  .glow span:nth-child(1):before{
-      background: yellowgreen;
-      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-  }
-  .glow span:nth-child(2):before{
-      background: yellowgreen;
-      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-  }
-  .glow span:nth-child(3):before{
-      background: yellowgreen;
-      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-  }
-  .glow span:nth-child(4):before{
-      background: yellowgreen;
-      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-  }
-  .glow span:nth-child(5):before{
-      background: yellowgreen;
-      box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-  }
-  @keyframes animate
-  {
-      0%{ transform: rotate(30deg) translateX(1000px); }
-  }
-  @keyframes animate1
-  {
-      0% { transform: translateY(100px) translateX(1000px); }
-  }
-  @keyframes animate2
-  {
-      0% { transform: translateX(1000px) translateY(500px); }
-  
-  }
-  @keyframes animate3
-  {
-      0%  {   transform: translateY(1000px); }
-      50% {   transform: translateX(1000px); }
-  }
-  @keyframes animate4
-  {
-      0% {    transform: translateX(1000px); }
-  }
-  
-  .glow span:nth-child(1){
-      animation: animate 50s alternate infinite;
-  }
-  .glow span:nth-child(2){
-      animation: animate1 50s alternate infinite;
-  }
-  .glow span:nth-child(3){
-      animation: animate2 50s alternate infinite;
-  }
-  .glow span:nth-child(4){
-      animation: animate3 50s alternate infinite;
-  }
-  .glow span:nth-child(5){
-      animation: animate4 50s alternate infinite;
-  }
-  
-  
-  
-  
   .splash-menu {
     position: absolute;
     /* display: inline-block; */
@@ -131,7 +55,7 @@
     /* background-color: #189ab4; */
     width: 30vw;
     height: 70vh;
-    font-family: cursive;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 24 px;
     padding: 2%;
     overflow: hidden;
@@ -145,7 +69,7 @@
     width: 70%;
     text-align: center;
     border: 2px none #3f4652;
-    color: white;
+    color: rgb(2, 63, 0);
     /* background-color: #05445e; */
     border-radius: 10px;
     cursor: pointer;

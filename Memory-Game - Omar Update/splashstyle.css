@@ -8,9 +8,10 @@
   height: 100vh;
   z-index: 2;
   background-color: #121212;
-  background-image: url(img/splash.jpeg);
+  background-image: url(img/jungle.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  overflow: hidden; 
+  background-size: cover; background-position: center top;
 }
 #gamelogo {
   display: inline-block;
@@ -22,44 +23,79 @@
   text-align: center;
   
 }
+.text{
+  color: white;
+  /* background-color: black; */
+  left: 30px;
+  font-size: 60px;
+  font-weight: bold;
+  font-family: Arial;
+  text-transform: uppercase;
+}
+.gradient{
+  background: linear-gradient(90deg, rgba(243, 72, 104,1) 20.328125854333244%,rgba(242, 71, 104,1) 20.328125854333244%,rgba(158, 0, 236,1) 80.32812823851904%);
+   position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+.text::before{
+  content: 'Memory Game';
+  position: absolute;
+  mix-blend-mode: difference;
+  filter: blur(2px);
+}
+
+.neon_wrapper{
+  display: inline-flex;
+  background: linear-gradient(90deg, rgba(243, 72, 104,1) 20.328125854333244%,rgba(242, 71, 104,1) 20.328125854333244%,rgba(158, 0, 236,1) 80.32812823851904%);
+  opacity: 0.7;
+  filter: blur(70px) brightness(300%);
+}
+
 
 .logotxt{
   color: #fff;
   font-size: 80px;
-  font-family: cursive;
+  font-family: "Audiowide", sans-serif;
   text-transform:uppercase;
   animation: glow 1s ease-in-out infinite alternate;
 }
 @keyframes glow {
   from {
-    text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px #0E670D, 0 0 35px #0E670D, 0 0 45px #0E670D, 0 0 55px #0E670D, 0 0 65px #0E670D;
+    text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px #0d4f67, 0 0 35px #750475, 0 0 45px #750475, 0 0 55px #750475, 0 0 65px #750475;
   }
   
   to {
-    text-shadow: 0 0 15px #fff, 0 0 25px #50AB4D, 0 0 35px #50AB4D, 0 0 45px #50AB4D, 0 0 55px #50AB4D, 0 0 65px #50AB4D, 0 0 75px #50AB4D;
+    text-shadow: 0 0 15px #fff, 0 0 25px #8f0339, 0 0 35px #8f0339, 0 0 45px #8f0339, 0 0 55px #8f0339, 0 0 65px #8f0339, 0 0 75px #8f0339;
+
   }
 }
 .start{
   color: #fff;
   position: absolute;
-  left: 51%;
-  bottom: 5%;
+  left: 50%;
+  bottom: 18%;
   width: 300px;
   height: 100px;
   margin: -50px 0 0 -150px;
   text-align: center;
   border-radius: 8px;
-  border: 3px solid #778331;
+  border: 3px solid #788532;
   cursor: pointer;
   z-index: 1;
 }
 #strtext{
-  font-family: cursive;
+  font-family: Arial;
   font-weight: bold;
   font-weight: 300;
   font-size:2.9em;
   margin: 15px 0 0;
-  color: rgba(120, 0, 50, .5);
+  /* color: rgba(120, 0, 50, .5); */
+  /* color: rgb(13, 13, 56);  */
+  color: rgb(134, 1, 41);
 }
 .start:hover {
   animation: border-flicker 2s linear forwards;
@@ -146,88 +182,7 @@
     filter: blur(70px) brightness(300%);
 }
 
-.glow{
-    position: relative;
-    width: 1500px;
-    height: 300px;
-    top: 450px;
-}
-.glow span{
-    position: absolute;
-    top: calc(0px * var(--g));
-    bottom: calc(20px * var(--g));
-    left: calc(10px * var(--g));
-    right: calc(50px * var(--g));
-}
 
-.glow span:before{
-    content: " ";
-    position: absolute;
-    top: 50%;
-    left: -8px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: yellowgreen;
-}
-.glow span:nth-child(1):before{
-    background: yellowgreen;
-    box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-}
-.glow span:nth-child(2):before{
-    background: yellowgreen;
-    box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-}
-.glow span:nth-child(3):before{
-    background: yellowgreen;
-    box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-}
-.glow span:nth-child(4):before{
-    background: yellowgreen;
-    box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-}
-.glow span:nth-child(5):before{
-    background: yellowgreen;
-    box-shadow: 0 0 20px yellowgreen, 0 0 40px yellowgreen, 0 0 60px yellowgreen, 0 0 80px yellowgreen, 0 0 8px yellowgreen;
-}
-@keyframes animate
-{
-    0%{ transform: rotate(30deg) translateX(1000px); }
-}
-@keyframes animate1
-{
-    0% { transform: translateY(100px) translateX(1000px); }
-}
-@keyframes animate2
-{
-    0% { transform: translateX(1000px) translateY(500px); }
-
-}
-@keyframes animate3
-{
-    0%  {   transform: translateY(1000px); }
-    50% {   transform: translateX(1000px); }
-}
-@keyframes animate4
-{
-    0% {    transform: translateX(1000px); }
-}
-
-.glow span:nth-child(1){
-    animation: animate 50s alternate infinite;
-}
-.glow span:nth-child(2){
-    animation: animate1 50s alternate infinite;
-}
-.glow span:nth-child(3){
-    animation: animate2 50s alternate infinite;
-}
-.glow span:nth-child(4){
-    animation: animate3 50s alternate infinite;
-}
-.glow span:nth-child(5){
-    animation: animate4 50s alternate infinite;
-}
 
 .splash-menu {
   position: absolute;
@@ -235,11 +190,10 @@
   display: none;
   top: 27vh;
   left: 35vw;
-  /* background-color: #189ab4; */
   width: 30vw;
   height: 70vh;
-  font-family: cursive;
-  font-size: 24 px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 20px;
   padding: 2%;
   overflow: hidden;
   text-align: center;
@@ -252,21 +206,21 @@
   width: 70%;
   text-align: center;
   border: 2px none #3f4652;
-  color: white;
-  /* background-color: #05445e; */
+  color: rgb(2, 63, 0);
   border-radius: 10px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
   animation: glowkey 0.5s ease-in-out infinite alternate;
 }
 @keyframes glowkey {
-    from {
-      text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #0E670D, 0 0 12px #0E670D, 0 0 15px #0E670D, 0 0 18px #0E670D, 0 0 21px #0E670D;
-    }
+  from {
+    text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #2fbb2c, 0 0 12px #2fbb2c, 0 0 15px #2fbb2c, 0 0 18px #2fbb2c, 0 0 21px #2fbb2c;
     
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 8px #50AB4D, 0 0 12px #50AB4D, 0 0 15px #50AB4D, 0 0 18px #50AB4D, 0 0 21px #50AB4D, 0 0 24px #50AB4D;
-    }
+  }
+  
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 8px #50AB4D, 0 0 12px #50AB4D, 0 0 15px #50AB4D, 0 0 18px #50AB4D, 0 0 21px #50AB4D, 0 0 24px #50AB4D;
+  }
 }
 .control-buttons:hover {
   background-color: #9cf181;
