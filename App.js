@@ -488,3 +488,75 @@ StartBtn.addEventListener("click", StartGameBtn);
 listScoreBtn.addEventListener("click", listScoreBtneffect);
 
 
+//how to play (slider)
+
+var f;
+        var x = 1;
+        var cb = function () {
+            myFunction(x);
+            x++;
+            if (x > 5) {
+                x = 1;
+            }
+        }
+
+        var cd = function () {
+            myFunction(x);
+            x--;
+            if (x < 1) {
+                x = 4;
+            }
+        }
+
+
+        function myFunction(x) {
+            var Img1 = document.getElementById("./img/how to play/1.png");
+
+
+
+
+            switch (x) {
+
+                case 1:
+                    document.getElementById("image1").src = "./img/how to play/1.png";
+
+                    break;
+
+                case 2:
+                    document.getElementById("image1").src = "./img/how to play/2.png";
+
+                    break;
+
+                case 3:
+                    document.getElementById("image1").src = "./img/how to play/3.png";
+
+                    break;
+
+                case 4:
+                    document.getElementById("image1").src = "./img/how to play/4.png";
+
+                    break;
+                case 5:
+                    document.getElementById("image1").src = "./img/how to play/5.png";
+                    break;
+
+
+            }
+        }
+
+        let myInterval;
+        let var14 = 1;
+        const box = document.querySelector('.box');
+        box.addEventListener('click', (e)=>{
+          e.target.classList.toggle('pause');
+          var14+=1;
+          console.log(var14)
+          if(var14%2 == 0){
+            myInterval = setInterval(cb, 2200);
+            console.log("on")
+          }
+          else if(var14%2 == 1){
+            clearInterval(myInterval);
+            console.log("off")
+          }
+        })
