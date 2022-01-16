@@ -64,6 +64,12 @@ let playerScore = document.querySelector(".listOfScores");
 let scoreMainList = document.querySelector(".ListContainer");
 let listScoreBtn = document.querySelector(".scoreBottomOk button");
 
+let start_btn = document.getElementById("start_btn");
+
+start_btn.addEventListener("click", function(e) {
+  timer = setInterval(updateCountdown, 1000);
+})
+
 // Navigation throw the all menus
 startdiv.addEventListener("click",function(){
   startdiv.style.display= "none";
@@ -386,7 +392,7 @@ function levels() {
       console.log("Hello is fired");
       get_cards = document.querySelectorAll(".memory-card");
     }
-    timer = setInterval(updateCountdown, 1000);
+    //timer = setInterval(updateCountdown, 1000);
   }
   // checkIfFired = false;
   cards = get_cards;
