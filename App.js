@@ -532,6 +532,8 @@ function updateCountdown() {
     winningSoundEffect.pause();
     //lost
     document.getElementById("lost").style.display = "inline";
+    document.getElementById("lost").style.bottom = "250px";
+    document.getElementById("lost").style.left = "30%";
     
     cards.forEach(card => card.removeEventListener("click", flipCard));
     if (checkBox.checked == true) {
@@ -546,10 +548,16 @@ function updateCountdown() {
     if (ifWon) {
       clearInterval(timer);
       if ((seconds == 1) & (minutes == 0)){
-        document.getElementById("won_lastMinute").style.display = "inline";}
+        document.getElementById("won_lastMinute").style.display = "inline";
+        document.getElementById("won_lastMinute").style.bottom = "250px";
+        document.getElementById("won_lastMinute").style.left = "30%";
+      }
       else{
       console.log("you won!!");
-      document.getElementById("won").style.display = "inline";}
+      document.getElementById("won").style.display = "inline";
+      document.getElementById("won").style.bottom = "250px";
+      document.getElementById("won").style.left = "30%";
+    }
     }
     seconds = seconds < 10 ? "0" + seconds : seconds;
     if (seconds < 10 && minutes == 0) {

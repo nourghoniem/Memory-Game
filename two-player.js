@@ -189,8 +189,6 @@ function checking(){
       card.style.order = random;
       Theme();
     })
-
-
   }
   else{
     setTimeout(checking, 1000);
