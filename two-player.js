@@ -32,6 +32,9 @@ let player2_frame = document.getElementById("player2_board");
 let score_1 = document.getElementById("score_1");
 let score_2 = document.getElementById("score_2");
 let start_btn = document.getElementById("start_btn");
+let cards_2 = document.querySelectorAll("#player2_board .memory-card")
+let cards_1 = document.querySelectorAll("#player1_board .memory-card")
+let level_id;
 
 
 //score part
@@ -122,6 +125,7 @@ var cardsForAction;
 let timer;
 
 function levels(){
+    level_id = this.id;
     //cards_container.style.display="flex";
     if(checkIfFired == false){
          checkIfFired = true;
@@ -353,8 +357,7 @@ function unflipCards(){
 }
 
  function checkIfWon(){
-  let cards_2 = document.querySelectorAll("#player2_board .memory-card")
-  let cards_1 = document.querySelectorAll("#player1_board .memory-card")
+ 
   let won = document.getElementById("won");
    if(wonFlag == false){
     let getFlipped = document.querySelectorAll("#player1_board .flip");
@@ -416,8 +419,7 @@ function unflipCards(){
  
 
  function updateCountdown(){
-  let cards_2 = document.querySelectorAll("#player2_board .memory-card")
-  let cards_1 = document.querySelectorAll("#player1_board .memory-card")
+ 
   let ifWon = checkIfWon();
   const minutes = Math.floor(time/60);
   let seconds = time % 60;
@@ -442,6 +444,14 @@ function unflipCards(){
       else if(scoreP1 == scoreP2){
         console.log("tie");
         document.getElementById("lost").style.display = "inline";
+        if(level_id != undefined){
+          if(level_id == "easy"){
+            document.getElementById("lost").style.bottom = "25px";
+          }
+          else {
+            document.getElementById("lost").style.bottom = "180px";
+          }
+        }
       }
       cards_1.forEach(card => card.removeEventListener("click", flipCard));
       cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));
