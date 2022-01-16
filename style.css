@@ -8,400 +8,29 @@
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   height: 100vh;
-  /* background-color: cornsilk; */
-  overflow: hidden;
+  background-color: cornsilk;
+  overflow:auto;
   background-size: cover;
   background-image: url("img/bg_7_photos_v2_x4.jpg");
-}
-
-/* =========================================== Splash Screen  ==================================================== */
-/* =========================================== Splash Screen Main Menu ============================================ */
-
-#gamelogo {
-  display: inline-block;
-  position: relative;
-  top: 8%;
-  left: 5%;
-  width: 40%;
-  height: 40%;
-}
-.control-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 2;
-  background-color: rgb(212 241 244 / 90%);
-}
-.splash-menu {
-  position: relative;
-  display: inline-block;
-  top: 20vh;
-  left: 20vw;
-  background-color: #189ab4;
-  width: 30vw;
-  height: 60vh;
-  font-size: 18px;
-  padding: 2%;
-  overflow: hidden;
-  text-align: center;
-  border-radius: 10px;
-}
-.control-buttons {
-  display: inline-block;
-  padding: 3% 6%;
-  margin: 3% 5%;
-  width: 70%;
-  text-align: center;
-  border: 2px none #3f4652;
-  color: white;
-  background-color: #05445e;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.control-buttons:hover {
-  font-size: 20px;
-  box-shadow: -3px -3px #999;
-}
-.control-buttons:active {
-  font-size: 20px;
-  box-shadow: -3px -3px rgb(61, 59, 59);
-  transform: translateY(-2px);
-}
-.control-buttons.back-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: right;
-  width: 30%;
-}
-.fas.fa-backward {
-  position: absolute;
-  left: 10%;
-  top: 30%;
-  font-size: 16px;
-}
-/* =========================================== Splash Screen Start Game Menu ============================================ */
-
-.splash-menu.startgame-menu {
-  position: absolute;
-  /* display: inline-block; */
-  display: none;
-  top: 20vh;
-  left: 60vw;
-  color: white;
-  text-decoration: underline;
-}
-.input_playerData {
-  /* background-color: darkcyan; */
-  width: 100%;
-  height: 28vh;
-  border-radius: 20px 20px 0px 0px;
-}
-.input_playerData h2 {
-  font-family: "Bakbak One", cursive;
-  margin: 0% 0%;
-  padding: 5% 0%;
-  font-size: 25px;
-  color: white;
-}
-.LevelsOf_Game {
-  width: 100%;
-  margin: 2% 0%;
-  height: 6vh;
-  position: absolute;
-  left: 2%;
-}
-.LevelsOf_Game .LevelStages {
-  display: inline-block;
-  background-color: chocolate;
-  height: 6vh;
-  margin: 3% 2%;
-  padding: 2% 1%;
-  font-family: "Lobster";
-  font-size: 20px;
-  cursor: pointer;
-  width: 25%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 1px 1px #bfbfbf7d;
-  text-align: center;
-  overflow: hidden;
-}
-.input_playerData .player_DataName {
-  width: 80%;
-  padding: 3% 5%;
-  border-radius: 15px;
-  font-family: "Bakbak One";
-  font-size: 20px;
-  text-align: center;
-}
-.popup_StartButton .startPlayBTN {
-  width: 40%;
-  font-size: 25px;
-  font-family: "Lobster", cursive;
-  margin: 3.5% 0%;
-  padding: 3% 0%;
-  border-radius: 10px;
-  background-color: #05445e;
-  color: white;
-  cursor: pointer;
-  outline: none;
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  overflow: hidden;
-}
-.popup_StartButton .startPlayBTN:hover {
-  width: 45%;
-  color: black;
-  background: linear-gradient(
-    45deg,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-  transition: 0.5s;
-}
-
-.LevelsOf_Game .LevelStages:hover {
-  width: 30%;
-  padding: 0% 0% 5% 0%;
-  margin: 0% 0%;
-  color: #fafafa;
-  font-size: 30px;
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #ff00c8,
-    #ff0000
-  );
-  transition: 0.5s;
-  text-align: center;
-}
-
-/* =========================================== Splash Screen - Score Menu ============================================ */
-
-.splash-menu.score-menu {
-  position: absolute;
-  /* display: inline-block; */
-  display: none;
-  top: 20vh;
-  left: 60vw;
-  color: white;
-  text-decoration: underline;
-}
-.control-buttons.score-buttons {
-  width: 40%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-/****************************** Score List **********************************************/
-
-.ListContainer {
-  height: 100vh;
-  margin: 0px -41%;
-  width: 100%;
-  background-color: #04662d24;
-}
-
-.ScoreListContainer {
-  position: absolute;
-  margin: 5% 30%;
-  width: 100%;
-  background-color: #967dc287;
-  border-radius: 15px 15px 0px 0px;
-}
-
-.highScoreTitle {
-  text-align: center;
-  background-color: coral;
-  font-family: "Lobster", cursive;
-  font-size: 3vh;
-  border-radius: 15px 15px 0px 0px;
-}
-
-.ScoreListContainer .listOfScores {
-  padding: 2%;
-  background-color: gainsboro;
-}
-.ScoreListContainer .listOfScores span {
-  display: block;
-  background-color: rgb(54, 52, 48);
-  padding: 2% 2%;
-}
-
-.ScoreListContainer .listOfScores .NoDataMessage {
-  display: block;
-  background-color: white;
-  padding: 2% 2%;
-  color: navy;
-  font-size: 20px;
-  font-weight: bolder;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  margin: 0% 0% 2% 0%;
-}
-
-.ScoreListContainer .listOfScores .dataBox {
-  font-size: 20px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  text-align: left;
-  font-weight: bold;
-}
-
-.ScoreListContainer .listOfScores .dataBox .NumericalScore {
-  position: relative;
-  bottom: 3px;
-  float: right;
-  background-color: #e91e63;
-  color: white;
-  padding: 1% 2%;
-  border-radius: 5px;
-  margin: 0% 1%;
-}
-
-.ScoreListContainer .listOfScores .dataBox:not(:last-child) {
-  margin-bottom: 2%;
-}
-
-.scoreBottomOk {
-  margin: 3% 40%;
-}
-
-/* .scoreBottomOk .OkBtn {
-  width: 90%;
-  height: 5vh;
-  font-family: "Lobster";
-  font-size: 25px;
-  font-weight: bold;
-  background: linear-gradient(45deg, #ff008e, #ffff00f2, #4c00ff80);
-} */
-
-/* =========================================== Splash Screen - How to Play Menu ============================================ */
-
-.splash-menu.howto-menu {
-  position: absolute;
-  /* display: inline-block; */
-  display: none;
-  top: 20vh;
-  left: 60vw;
-  color: white;
-  text-decoration: underline;
-}
-
-/* =========================================== Splash Screen - Settings Menu ============================================ */
-
-.splash-menu.settings-menu {
-  position: absolute;
-  /* display: inline-block; */
-  display: none;
-  top: 20vh;
-  left: 60vw;
-  color: white;
-  /* text-decoration:underline; */
-}
-
-.settings-table,
-tr,
-th {
-  /* border: 1px solid black; */
-  width: 95%;
-  position: relative;
-  overflow: hidden;
-  font-size: 24px;
-}
-.setting {
-  width: 180px;
-  height: 40px;
-}
-.switch {
-  display: inline-block;
-  text-align: left;
-  width: 95%;
-  height: 90%;
-  margin: 0 10px;
-}
-.switch input {
-  display: none;
-}
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 12%;
-  left: 30%;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 30px;
-  width: 72px;
-  height: 32px;
-}
-.slider:before {
-  position: absolute;
-  content: "";
-  top: 11%;
-  left: 8%;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 65px;
-  width: 25px;
-  height: 25px;
-}
-input:checked + .slider {
-  background-color: #48ff00;
-}
-input:checked + .slider:before {
-  transform: translateX(140%);
-}
-
-.fas.fa-volume-up,
-.fas.fa-moon {
-  position: absolute;
-  font-size: 29px;
-  top: 20%;
-  left: 75%;
-}
-.fas.fa-volume-mute,
-.fas.fa-sun,
-.fas.fa-envelope {
-  position: absolute;
-  font-size: 29px;
-  top: 20%;
-  left: 8%;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-#Support {
-  position: absolute;
-  top: 20%;
-  left: 28%;
 }
 
 /* =========================================== The Game ============================================ */
 /* ======================================= Game Styling ======================================================= */
 
 .memory-game-container {
-    width: 840px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    padding-top: 0px;
-    perspective: 1000px;
-    position: relative;
-    top:150px;
-    border: solid 5px greenyellow;
-    box-shadow:  0 0 30px greenyellow;
-    border-radius: 20px;
-    animation: mymove 10s infinite;
-    padding: 5px;
+  width: 840px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding-top: 0px;
+  perspective: 1000px;
+  position: relative;
+  top:150px;
+  border: solid 5px greenyellow;
+  box-shadow:  0 0 30px greenyellow;
+  border-radius: 20px;
+  animation: mymove 10s infinite;
+  padding: 5px;
 }
 @keyframes mymove {
   50% {box-shadow:  0 0 80px greenyellow; }
@@ -489,7 +118,7 @@ a {
   animation: score_shadow 10s linear infinite;
 }
 @keyframes score_shadow {
-  50% {box-shadow:  0 0 80px orangered; }
+50% {box-shadow:  0 0 80px orangered; }
 }
 #lost{
   background-color: orangered;
@@ -505,94 +134,98 @@ a {
   width: 40%;
 }
 #lost{
-  background-color: firebrick;
-  text-align: center;
-  opacity: 0.9;
-  border: solid 3px black;
-  border-radius: 25px;
-  display: none;
-  position: absolute;
-  left: 400px;
-  color: white;
-  font-family: "Lobster";
-  font-size: 28px;
-  padding :20px;
-  bottom: 200px;
-  width: 40%;
-  box-shadow:  0 0 30px black;
-  animation: lost 10s infinite;
+background-color: firebrick;
+text-align: center;
+opacity: 0.9;
+border: solid 3px black;
+border-radius: 25px;
+display: none;
+position: absolute;
+left: 400px;
+color: white;
+font-family: "Lobster";
+font-size: 28px;
+padding :20px;
+bottom: 200px;
+width: 40%;
+box-shadow:  0 0 30px black;
+animation: lost 10s infinite;
 }
 @keyframes lost {
-  50% {box-shadow:  0 0 80px black; }
+50% {box-shadow:  0 0 80px black; }
 }
 #lost_title{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #fafafa;
-  font-size: 24px;
-  font-weight: bold;
-  /* font-style: italic; */
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+color: #fafafa;
+font-size: 24px;
+font-weight: bold;
+/* font-style: italic; */
 }
 #redirect_text{
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+font-size: 18px;
+color: black;
+font-weight: bold;
+font-family: Arial, Helvetica, sans-serif;
 }
+
 #won{
-  background-color: teal;
-  text-align: center;
-  opacity: 0.9;
-  border: solid 3px turquoise;
-  border-radius: 25px;
-  display: none;
-  position: absolute;
-  left: 400px;
-  color: white;
-  font-family: "Sofia";
-  font-size: 28px;
-  padding :20px;
-  bottom: 200px;
-  width: 40%;
-  box-shadow:  0 0 30px turquoise;
-  animation: won 10s infinite;
+background-color: teal;
+text-align: center;
+opacity: 0.9;
+border: solid 3px turquoise;
+border-radius: 25px;
+display: none;
+position: absolute;
+left: 400px;
+color: white;
+font-family: "Sofia";
+font-size: 28px;
+padding :20px;
+bottom: 200px;
+width: 40%;
+box-shadow:  0 0 30px turquoise;
+animation: won 10s infinite;
 }
+
 @keyframes won {
-  50% {box-shadow:  0 0 80px turquoise; }
+50% {box-shadow:  0 0 80px turquoise; }
 }
+
 #won_title{
-  font-family: "Sofia";
-  color: #fafafa;
-  font-size: 26px;
-  font-weight: bold;
-  /* font-style: italic; */
+font-family: "Sofia";
+color: #fafafa;
+font-size: 26px;
+font-weight: bold;
+/* font-style: italic; */
 }
 
 #won_lastMinute{
-  background-color: rgb(207, 207, 25);
-  text-align: center;
-  opacity: 0.9;
-  border: solid 3px yellow;
-  border-radius: 25px;
-  display: none;
-  position: absolute;
-  left: 400px;
-  color: white;
-  font-family: "Sofia";
-  font-size: 28px;
-  padding :20px;
-  bottom: 150px;
-  width: 40%;
-  box-shadow:  0 0 30px yellow;
-  animation: won_LastMin 10s infinite;
+background-color: rgb(207, 207, 25);
+text-align: center;
+opacity: 0.9;
+border: solid 3px yellow;
+border-radius: 25px;
+display: none;
+position: absolute;
+left: 400px;
+color: white;
+font-family: "Sofia";
+font-size: 28px;
+padding :20px;
+bottom: 150px;
+width: 40%;
+box-shadow:  0 0 30px yellow;
+animation: won_LastMin 10s infinite;
 }
+
 @keyframes won_LastMin {
-  50% {box-shadow:  0 0 80px yellow; }
+50% {box-shadow:  0 0 80px yellow; }
 }
 #won_lastMinute_title{
-  font-family: "Sofia";
-  color: #fafafa;
-  font-size: 26px;
-  font-weight: bold;
+font-family: "Sofia";
+color: #fafafa;
+font-size: 26px;
+font-weight: bold;
 }
 
 
@@ -600,35 +233,35 @@ a {
 /******/
 /*Try*/
 .button {
-  border: 0;
-  background: transparent;
-  box-sizing: border-box;
-  width: 0;
-  height: 74px;
+border: 0;
+background: transparent;
+box-sizing: border-box;
+width: 0;
+height: 74px;
 
-  border-color: transparent transparent transparent #202020;
-  transition: 100ms all ease;
-  cursor: pointer;
+border-color: transparent transparent transparent #202020;
+transition: 100ms all ease;
+cursor: pointer;
 
-  border-style: solid;
-  border-width: 37px 0 37px 60px;
+border-style: solid;
+border-width: 37px 0 37px 60px;
 
-  
+
 }
 .paused {
-  border-style: double;
-  border-width: 0px 0 0px 60px;
+border-style: double;
+border-width: 0px 0 0px 60px;
 }
 
 .button:hover {
-  border-color: transparent transparent transparent #2e555a;
+border-color: transparent transparent transparent #2e555a;
 }
 /****/
 #h2pDiv{
-  margin-top: 20px;
+margin-top: 20px;
 }
 span{
-  padding-left:10px;
+padding-left:10px;
 }
 
 
@@ -636,9 +269,9 @@ span{
 /*$$$$$$$$$$$$$$$$$$$$$*/
 /*Image Part*/
 img {
-  padding-top: 15px;
-  margin-left: 1;
-  width: 300px;
-  height: 250px;
-  bottom: 0;
+padding-top: 15px;
+margin-left: 1;
+width: 300px;
+height: 250px;
+bottom: 0;
 }

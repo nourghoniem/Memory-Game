@@ -1,0 +1,271 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    /* height: 100vh;
+    background-color: cornsilk;
+    overflow: hidden; */
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    height: 100vh;
+    /* background-color: cornsilk; */
+    overflow: hidden;
+    background-size: cover;
+    background-image: url("img/bg_7_photos_v2_x4.jpg");
+}
+
+.memory-game-container{
+    width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 150px;
+    perspective: 1000px;
+}
+#player1_board{
+    display: inline-flex; 
+    width: 49%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: fit-content;
+    border: solid 5px greenyellow;
+    border-radius: 20px;
+    padding: 5px;
+    border-style: hidden;
+    margin-top: 50px;
+}
+@keyframes mymove {
+    50% {box-shadow:  0 0 50px greenyellow; }
+  }
+@keyframes mymove2 {
+    50% {box-shadow:  0 0 50px rgb(212, 31, 47); }
+  }
+#player2_board{
+    display: inline-flex; 
+    width: 49%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: fit-content;
+    border: solid 5px rgb(212, 31, 47);
+    border-radius: 20px;
+    padding: 5px;
+    border-style: hidden;
+    margin-top: 50px;
+    /*animation: mymove 2s infinite; */
+}
+.memory-card{
+    width: 150px;
+    height:150px;
+    /* border: 2px solid greenyellow; */
+    position: relative;
+    align-items: flex-start;
+    max-height: 180px;
+    margin-left:4px;
+    margin-top:3px;
+    box-shadow: 2px indigo;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    /*padding-top: 20px;*/
+}
+.memory-card.flip{
+    transform: rotateY(180deg);
+}
+.memory-card:active{
+    transform: scale(.97);
+    /* transition: transform .2s; */
+
+}
+.front-face,
+.back-face{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 20px;
+    /* border: 2px solid blue;  */
+    border-radius: 10px;
+    backface-visibility: hidden;
+    background-color: white;
+}
+.front-face{
+    transform: rotateY(180deg);
+}
+.timer,
+#countdown {
+  position: relative;
+  left: 47%;
+  display: inline-block;
+}
+
+#countdown {
+  /* display: inline-flex;  */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0;
+  width: 200px;
+  height: 70px;
+  font-size: 50px;
+  position: absolute;
+  margin-top: 5px;
+}
+
+#score_1{
+  /* display: inline-flex;  */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: orangered;
+  border-radius: 30px;
+  opacity: 0.8;
+  margin: 0;
+  width: 250px;
+  height: 50px;
+  font-size: 30px;
+  margin-top: 70px;
+  position: absolute;
+  border: 3px solid orangered;
+  box-shadow:  0 0 30px orangered;
+  left: 50px;
+  top: -45px;
+  padding-left: 10px;
+  padding-top: 2px;
+  animation: score_shadow 10s linear infinite;
+}
+#score_2{
+  /* display: inline-flex;  */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: orangered;
+  border-radius: 30px;
+  opacity: 0.8;
+  margin: 0;
+  width: 250px;
+  height: 50px;
+  font-size: 30px;
+  margin-top: 70px;
+  position: absolute;
+  border: 3px solid orangered;
+  box-shadow:  0 0 30px orangered;
+  right:50px;
+  top: -45px;
+  padding-left: 10px;
+  padding-top: 2px;
+  animation: score_shadow 10s linear infinite;
+}
+@keyframes score_shadow {
+  50% {box-shadow:  0 0 80px orangered; }
+}
+
+#lost{
+  background-color: orangered;
+  opacity: 0.7;
+  border: 2px solid orangered;
+  border-radius: 25px;
+  display: none;
+  position: relative;
+  left: 600px;
+  color: white;
+  padding :100px;
+  bottom: 100px;
+  width: 40%;
+}
+#lost{
+  background-color: firebrick;
+  text-align: center;
+  opacity: 0.9;
+  border: solid 3px black;
+  border-radius: 25px;
+  display: none;
+  position: absolute;
+  left: 400px;
+  color: white;
+  font-family: "Lobster";
+  font-size: 28px;
+  padding :20px;
+  bottom: 200px;
+  width: 40%;
+  box-shadow:  0 0 30px black;
+  animation: lost 10s infinite;
+}
+@keyframes lost {
+  50% {box-shadow:  0 0 80px black; }
+}
+#lost_title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #fafafa;
+  font-size: 24px;
+  font-weight: bold;
+  /* font-style: italic; */
+}
+
+#redirect_text{
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#won{
+  background-color: teal;
+  text-align: center;
+  opacity: 0.9;
+  border: solid 3px turquoise;
+  border-radius: 25px;
+  display: none;
+  position: absolute;
+  left: 400px;
+  color: white;
+  font-family: "Sofia";
+  font-size: 28px;
+  padding :20px;
+  bottom: 200px;
+  width: 40%;
+  box-shadow:  0 0 30px turquoise;
+  animation: won 10s infinite;
+}
+@keyframes won {
+  50% {box-shadow:  0 0 80px turquoise; }
+}
+
+
+#won_title{
+  font-family: "Sofia";
+  color: #fafafa;
+  font-size: 26px;
+  font-weight: bold;
+  /* font-style: italic; */
+}
+
+#won_lastMinute{
+  background-color: rgb(207, 207, 25);
+  text-align: center;
+  opacity: 0.9;
+  border: solid 3px yellow;
+  border-radius: 25px;
+  display: none;
+  position: absolute;
+  left: 400px;
+  color: white;
+  font-family: "Sofia";
+  font-size: 28px;
+  padding :20px;
+  bottom: 150px;
+  width: 40%;
+  box-shadow:  0 0 30px yellow;
+  animation: won_LastMin 10s infinite;
+}
+@keyframes won_LastMin {
+  50% {box-shadow:  0 0 80px yellow; }
+}
+#won_lastMinute_title{
+  font-family: "Sofia";
+  color: #fafafa;
+  font-size: 26px;
+  font-weight: bold;
+}
+

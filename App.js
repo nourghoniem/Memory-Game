@@ -1,5 +1,13 @@
-// ======================= Splash Screen ===================
-//*************Moving Through Menus*********************
+
+// Declare Openning Screen Variables
+let startdiv = document.getElementsByClassName("start")[0];
+let logodiv = document.getElementById("gamelogo");
+let noofplayersmenu = document.getElementsByClassName("no-ofplayers-menu")[0];
+let sigplrButton = document.getElementsByClassName("no-ofplayers-button")[0];
+let mltplrButton = document.getElementsByClassName("no-ofplayers-button")[1];
+// Declare Start Menu Variables
+let splashmenu = document.getElementsByClassName("splash-menu")[1];
+let selectlevelmenu = document.getElementsByClassName("LevelsOf_Game-menu")[0];
 let startGameMenu = document.getElementsByClassName("strgame-button")[0];
 let scoreMenu = document.getElementsByClassName("scr-button")[0];
 let howtoplayMenu = document.getElementsByClassName("htp-button")[0];
@@ -11,23 +19,20 @@ let catchSettings = document.getElementsByClassName("settings-menu")[0];
 let start = document.getElementsByClassName("startPlayBTN")[0];
 let allSplash = document.getElementsByClassName("control-menu")[0];
 let backButtons = document.querySelectorAll(".back-button");
-//sound part
+//  Declare Sound Elements
 let sound_1 = document.getElementById("soundEffectbtn");
 let matchSoundEffect = document.getElementById("matchCard");
 let winningSoundEffect = document.getElementById("winningSound");
 let losingSoundeffect = document.getElementById("losingSound");
 let checkSound = document.getElementById("soundbtn");
-
-
-//score part
+//  Declare Score Variables
 const eLevel = 25;
 const mLevel = 30;
 const hLevel = 50;
-
 let score = 0;
 let flipNumbers = 0;
 let initValue = 0;
-
+// Declare Game Elememnts
 var easy = document.getElementById("easy");
 var medium = document.getElementById("medium");
 var hard = document.getElementById("hard");
@@ -51,24 +56,50 @@ let time = StartingMinutes * 60; // get time in sec.
 let wonFlag = false;
 const countEl = document.getElementById("countdown");
 const liveScore = document.getElementById("score_");
-
 let value = true;
-
-
+//  Declare LocalStorage Elements
 let inputSection = document.querySelector(".input_playerData input"); // Player Input Element getting His Name
-let StartBtn = document.querySelector(".popup_StartButton button"); // Start Button Element
+let StartBtn = document.querySelector(".popup_StartButton span"); // Start Button Element
 let playerScore = document.querySelector(".listOfScores");
 let scoreMainList = document.querySelector(".ListContainer");
 let listScoreBtn = document.querySelector(".scoreBottomOk button");
 
-startGameMenu.addEventListener("click", function () {
-  catchStart.style.display = "inline-block";
+// Navigation throw the all menus
+startdiv.addEventListener("click",function(){
+  startdiv.style.display= "none";
+  noofplayersmenu.style.display = "inline-block";
   if(checkSound.checked == true)
   {
     sound_1.play();
   }
 });
+sigplrButton.addEventListener("click",function(){
+  logodiv.style.display = "none";
+  noofplayersmenu.style.display = "none";
+  splashmenu.style.display = "inline-block"
+  if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
+});
+startGameMenu.addEventListener("click", function () {
+  splashmenu.style.display = "none";
+  selectlevelmenu.style.display = "inline-block";
+  if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
+});
+buttons[0].addEventListener("click", () => {
+    selectlevelmenu.style.display = "none";
+    catchStart.style.display="inline-block";
+    if(checkSound.checked == true)
+  {
+    sound_1.play();
+  }
+  });
 scoreMenu.addEventListener("click", function () {
+  splashmenu.style.display = "none";
   catchScore.style.display = "inline-block";
   if(checkSound.checked == true)
   {
@@ -76,6 +107,7 @@ scoreMenu.addEventListener("click", function () {
   }
 });
 howtoplayMenu.addEventListener("click", function () {
+  splashmenu.style.display = "none";
   catchHowToPlay.style.display = "inline-block";
   if(checkSound.checked == true)
   {
@@ -83,6 +115,7 @@ howtoplayMenu.addEventListener("click", function () {
   }
 });
 settingsMenu.addEventListener("click", function () {
+  splashmenu.style.display = "none";
   catchSettings.style.display = "inline-block";
   if(checkSound.checked == true)
   {
@@ -92,6 +125,7 @@ settingsMenu.addEventListener("click", function () {
 backButtons.forEach((element) => {
   element.addEventListener("click", () => {
     element.parentElement.style.display = "none";
+    splashmenu.style.display = "inline-block";
     if(checkSound.checked == true)
   {
     sound_1.play();
@@ -99,6 +133,46 @@ backButtons.forEach((element) => {
   });
 });
 
+// Start the Game (Display the splash screen)
+// start.addEventListener("click", () => {
+//   allSplash.style.display = "none";
+// });
+/* in the Setting Part*/
+
+// Background Music Effect
+let adio = document.getElementById("myAudio");
+let checkBox = document.getElementById("audio_setting");
+
+let playMusic = function () {
+  // adio.play();
+  if (checkBox.checked == true) {
+    adio.play();
+  } else if (checkBox.checked == false) {
+    adio.pause();
+  }
+};
+
+// Theme Effect
+const backCard = document.getElementsByClassName("back-face");
+const frontCard = document.getElementsByClassName("front-face");
+
+let theme = document.getElementById("changeTheme");
+function Theme() {
+  if (theme.checked == true) {
+    document.body.style.backgroundImage = "url('./img/darkTheme.png')";
+    //  document.body.style.backgroundColor = "#000000";
+    for (var i = 0; i < backCard.length; i++) {
+      backCard[i].style.backgroundColor = "rgba(20,20,20,0.2)";
+      frontCard[i].style.backgroundColor = "rgba(20,20,20,0.9)";
+    }
+  } else {
+    document.body.style.backgroundColor = "#fff8dc";
+    for (var i = 0; i < backCard.length; i++) {
+      backCard[i].style.backgroundColor = "#FFFFFF";
+      frontCard[i].style.backgroundColor = "#FFFFFF";
+    }
+  }
+}
 /***************************************************************************************************************************************************************/
 
 /************************************ Set Player Data in Array ********************************************/
@@ -159,7 +233,7 @@ function deleteDataWith(DataID) {
     return f.id != DataID;
   });
 }
-
+/******************************************************************************************************/
 /*****************************************************************************************************************************************************************/
 // Start the Game (Display the splash screen)
 
@@ -216,47 +290,6 @@ start.addEventListener("click", () => {
   }
 });
 /****************************************************************************************************************************************************************/
-// Background Music Effect
-let adio = document.getElementById("myAudio");
-let checkBox = document.getElementById("audio_setting");
-
-let playMusic = function () {
-  // adio.play();
-  if (checkBox.checked == true) {
-    adio.play();
-  } else if (checkBox.checked == false) {
-    adio.pause();
-  }
-};
-
-
-
-
-//Sound Effect
-
-// Theme Effect
-/* in the Setting Part*/
-const backCard = document.getElementsByClassName("back-face");
-const frontCard = document.getElementsByClassName("front-face");
-let theme = document.getElementById("changeTheme");
-function Theme() {
-  if (theme.checked == true) {
-    document.body.style.backgroundImage = "url('./img/darkTheme.png')";
-    //  document.body.style.backgroundColor = "#000000";
-    for (var i = 0; i < backCard.length; i++) {
-      backCard[i].style.backgroundColor = "rgba(20,20,20,0.2)";
-      frontCard[i].style.backgroundColor = "rgba(20,20,20,0.9)";
-    }
-   } else {
-    document.body.style.backgroundImage = "url('./img/bg_7_photos_v2_x4.jpg')";
-    document.body.style.backgroundColor = "#fff8dc";
-    for (var i = 0; i < backCard.length; i++) {
-      backCard[i].style.backgroundColor = "#FFFFFF";
-      frontCard[i].style.backgroundColor = "#FFFFFF";
-    }
-  }
-}
-
 // =========================== Functions of the Game ============================
 
 function addCards() {
@@ -288,13 +321,14 @@ function addCards() {
 function mediumLevel() {
   addCards();
   document.getElementById("game-container").style.top = "50px";
-  //document.getElementById("game-container").style.paddingTop = "60px";
+  // document.getElementById("game-container").style.paddingTop = "60px";
 }
 
 function hardLevel() {
   addCards();
   addCards();
   let game_count = document.getElementsByClassName("memory-card");
+  
   for (var i = 4; i < 6; i++) {
     divs[i].setAttribute("data-framework", "water");
     front_images[i].setAttribute("src", "img/water.png");
@@ -303,13 +337,13 @@ function hardLevel() {
     divs[i].setAttribute("data-framework", "fall");
     front_images[i].setAttribute("src", "img/fall.png");
   }
-  //document.getElementById("game-container").style.paddingTop = "10px";
-   document.getElementById("game-container").style.top = "10px";
-   document.getElementById("game-container").style.width = "720px";
-   for(var i=0; i< game_count.length; i++){
-     game_count[i].style.width = "170px";
-     game_count[i].style.height = "160px";
-   }
+  // document.getElementById("game-container").style.paddingTop = "10px";
+  document.getElementById("game-container").style.top = "10px";
+  document.getElementById("game-container").style.width = "720px";
+  for(var i=0; i< game_count.length; i++){
+    game_count[i].style.width = "170px";
+    game_count[i].style.height = "160px";
+  }
 }
 
 let timer;
@@ -331,6 +365,8 @@ function levels() {
       time = StartingMinutes * 60;
       hardLevel();
       console.log("click event from hard");
+      selectlevelmenu.style.display = "none";
+      catchStart.style.display="inline-block";
       this.removeEventListener("click", levels);
       initValue = hLevel;
       console.log("Constant= " + initValue);
@@ -340,6 +376,8 @@ function levels() {
       time = StartingMinutes * 60;
       mediumLevel();
       console.log("click event from medium");
+      selectlevelmenu.style.display = "none";
+      catchStart.style.display="inline-block";
       this.removeEventListener("click", levels);
       initValue = mLevel;
       console.log("Constant= " + initValue);
@@ -350,7 +388,7 @@ function levels() {
     }
     timer = setInterval(updateCountdown, 1000);
   }
-  //checkIfFired = false;
+  // checkIfFired = false;
   cards = get_cards;
 }
 buttons.forEach((button) => button.addEventListener("click", levels));
@@ -385,7 +423,6 @@ function flipCard() {
   }
 }
 
-
 function checkForMatch() {
   let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
   if (isMatch) {
@@ -393,6 +430,7 @@ function checkForMatch() {
     if (checkBox.checked == true) {
       adio.pause();
       matchSoundEffect.play();
+      adio.play();
       setTimeout(playBkMusic, 2500);
     } else {
       matchSoundEffect.play();
@@ -441,11 +479,11 @@ function unflipCards() {
 }
 
 function resetBoard(){
-   [hasFlippedCard, lockBoard] = [false, false];
-   [firstCard, secondCard] = [null, null];
- }
+  [hasFlippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
 
- function reloadWindow() {
+function reloadWindow() {
   location.reload()
 }
 
@@ -519,6 +557,8 @@ function updateCountdown() {
 }
 
 checking();
+
+
 
 
 //how to play (slider)
