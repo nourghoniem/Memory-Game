@@ -353,6 +353,8 @@ function unflipCards(){
 }
 
  function checkIfWon(){
+  let cards_2 = document.querySelectorAll("#player2_board .memory-card")
+  let cards_1 = document.querySelectorAll("#player1_board .memory-card")
   let won = document.getElementById("won");
    if(wonFlag == false){
     let getFlipped = document.querySelectorAll("#player1_board .flip");
@@ -361,10 +363,11 @@ function unflipCards(){
     let getCards = document.querySelectorAll("#player1_board .memory-card")
     let getCards_p2 = document.querySelectorAll("#player2_board .memory-card")
     if(getFlipped.length == getCards.length){
+      cards_1.forEach(card => card.removeEventListener("click", flipCard));
+      cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));
        wonFlag = true;
        console.log("Player 1 won the game");
-         // player2_frame.style.borderStyle = "none";
-      won.textContent = "Player 1 won";
+       won.textContent = "Player 1 won";
        document.getElementById("won").style.display = "inline";
        console.log("p1 won");
        player1_board.style.borderStyle = "none";
@@ -383,8 +386,9 @@ function unflipCards(){
         setTimeout(reloadWindow, 12000)
       }
     }
-    }
     else if(getFlipped_p2.length == getCards_p2.length){
+      cards_1.forEach(card => card.removeEventListener("click", flipCard));
+      cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));
         wonFlag = true;
         won.textContent = "Player 2 won";
         document.getElementById("won").style.display = "inline";
@@ -405,6 +409,7 @@ function unflipCards(){
           setTimeout(reloadWindow, 12000)
         }
     }
+  }
     return wonFlag;
 
    }
@@ -430,7 +435,7 @@ function unflipCards(){
 
       }
       else if(scoreP1 > scoreP2){
-        won.textContent = "Player 1won!!";
+        won.textContent = "Player 1 won!!";
         document.getElementById("won").style.display = "inline";
         console.log("p1 won");
       }
