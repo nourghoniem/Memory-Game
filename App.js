@@ -275,8 +275,8 @@ start.addEventListener("click", () => {
             allSplash.style.display = "none";
           } else if (result.isDenied) {
             Swal.fire("You Shold Enter New Name", "", "info");
-            deleteDataWith(localStorage.key(i));
-            localStorage.removeItem(localStorage.key(i));
+            localStorage.removeItem(ArrOfAddedData[i].id);
+            deleteDataWith(ArrOfAddedData[i].id);
           }
         });
         break;

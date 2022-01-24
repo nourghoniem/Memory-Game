@@ -41,7 +41,7 @@
             <span class="control-buttons scr-button" >Score</span>
             <span class="control-buttons htp-button">How to Play</span>
             <span class="control-buttons stg-button" >Settings</span>
-            <span class="control-buttons" onclick = "window.close();">Exit</span>
+            <span class="control-buttons"><a href="index.html" target="_top"></a>Exit</span>
         </div>
         <div class="splash-menu LevelsOf_Game-menu">
             <span class="control-buttons LevelStages" id ="easy">Easy</span>
@@ -274,6 +274,10 @@
             <!-- for lose sound -->
             <audio id = "losingSound" class = "hiddenMusic">
                 <source src="audio/losing.mp3" type="audio/mpeg" id = "music1">
+            </audio>
+            <!-- for lose sound both sides -->
+            <audio id = "lostSound" class = "hiddenMusic">
+                <source src="audio/lost.wav" type="audio/mpeg" id = "music1">
             </audio>
             <!-- for match cards -->
             <audio id = "matchCard" class = "hiddenMusic">
