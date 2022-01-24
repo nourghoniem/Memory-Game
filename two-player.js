@@ -14,7 +14,7 @@ var front_img,  back_img;
 var front_img_p2,  back_img_p2;
 var card_arr = [];
 var checkIfFired = false;
-var get_cards;
+var get_cards, get_cards_p2;
 var hasFlippedCard = false;
 var firstCard, secondCard;
 var div;
@@ -32,11 +32,10 @@ let player2_frame = document.getElementById("player2_board");
 let score_1 = document.getElementById("score_1");
 let score_2 = document.getElementById("score_2");
 let start_btn = document.getElementById("start_btn");
-let cards_2 = document.querySelectorAll("#player2_board .memory-card")
-let cards_1 = document.querySelectorAll("#player1_board .memory-card")
+let cards_2;
+let cards_1;
+
 let level_id;
-
-
 //score part
 //Constant part <depends on level>
 const eLevel = 25;
@@ -159,7 +158,7 @@ function levels(){
          }
          if(checkIfFired==true){
             console.log("Hello is fired")
-            get_cards = document.querySelectorAll(".memory-card");
+            get_cards = document.querySelectorAll("#player1_board .memory-card");
          }
          //timer = setInterval(updateCountdown, 1000);
         }
@@ -167,28 +166,31 @@ function levels(){
         player1_frame.style.borderStyle = "solid";
   //checkIfFired = false;
   cardsForAction = get_cards;
+
 }
 
 
 buttons.forEach(button => button.addEventListener("click",  levels))
+
 function checking(){
   let cards;
-  //let cards_p1;
+  //let cards_p2;
   if(typeof(cardsForAction) !== "undefined"){
-     if(checkPlayersTurn == false){
+   
         cards = document.querySelectorAll("#player1_board .memory-card")
         cards.forEach(card => card.addEventListener("click", flipCard))
+
         player1_frame.style.animation = "mymove 2s infinite"; 
         player1_frame.style.borderStyle = "solid";
 
-     }
+   
      
     //shuffle
-     cardsForAction.forEach(card => {
-      let random = Math.floor(Math.random() * cards.length)
-      card.style.order = random;
-      Theme();
-    })
+    //  cardsForAction.forEach(card => {
+    //   let random = Math.floor(Math.random() * cards.length)
+    //   card.style.order = random;
+    //   Theme();
+    // })
   }
   else{
     setTimeout(checking, 1000);
@@ -196,6 +198,9 @@ function checking(){
 }
 
 function flipCard(){
+  let cards = [];
+  let cards_p2 = [];
+ 
   if(lockBoard) return;
   if(this === firstCard) return;
   this.classList.toggle("flip");
@@ -204,29 +209,50 @@ function flipCard(){
     firstCard = this;
   }
   else{
-    checkPlayersTurn = true;
     secondCard = this;
     checkForMatchP1();
     console.log("two cards flipped");
-    console.log(checkPlayersTurn);
-  }
-  if(checkPlayersTurn == true){
-      let cards = document.querySelectorAll("#player1_board .memory-card")
+    checkPlayersTurn == false
+  
+  if(checkPlayersTurn == false){
+      let p1 = document.querySelectorAll("#player1_board .memory-card");
+      let p2 = document.querySelectorAll("#player2_board .memory-card");
+      p1.forEach(function(m){
+        if(!m.classList.contains("flip")){
+          cards.push(m);
+        }
+      });
+      p2.forEach(function(m){
+        if(!m.classList.contains("flip")){
+          cards_p2.push(m);
+        }
+      });
+      // for(var i = 0; i < cards.length; i++){
+      //   console.log(cards[i]);
+      // }
+      // for(var i = 0; i < cards_p2.length; i++){
+      //   console.log(cards_p2[i]);
+      // }
       cards.forEach(card => card.removeEventListener("click", flipCard))
-      let cards_p2 = document.querySelectorAll("#player2_board .memory-card")
+      checkPlayersTurn = true;
       cards_p2.forEach(card => card.addEventListener("click", flipCard_p2))
+  
       setTimeout(function(){
         player1_board.style.borderStyle = "none";
         player1_board.style.removeProperty("animation");
         player2_board.style.borderStyle = "solid";
         player2_frame.style.animation = "mymove2 2s infinite"; 
-
+  
       }, 1500)
-     
+    }
   }
-}
+  }
+
 
 function flipCard_p2(){
+  let cards = [];
+  let cards_p2 = [];
+  
     if(lockBoard) return;
     if(this === firstCard) return;
     this.classList.toggle("flip");
@@ -235,52 +261,48 @@ function flipCard_p2(){
       firstCard = this;
     }
     else{
-      //hasFlippedCard = false;
-      checkPlayersTurn = false;
+     
       secondCard = this;
       checkForMatchP2();
       console.log("two cards flipped");
       console.log(checkPlayersTurn);
-    }
-    if(checkPlayersTurn == false){
-        let cards = document.querySelectorAll("#player2_board .memory-card")
-       
-        cards.forEach(card => card.removeEventListener("click", flipCard_p2))
-        let cards_p2 = document.querySelectorAll("#player1_board .memory-card")
-        cards_p2.forEach(card => card.addEventListener("click", flipCard))
-        setTimeout(function(){
-          player2_board.style.borderStyle = "none";
-          player2_board.style.removeProperty("animation");
-          player1_frame.style.animation = "mymove 2s infinite"; 
-          player1_frame.style.borderStyle = "solid";
-  
-        }, 1000)
-       
-    }
-    checkPlayersTurn = false;
-  }
-  // function checkForMatch(){
-  //   let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-  //   if (isMatch) {
-  //     disableCards();
-  //     // if (checkBox.checked == true) {
-  //     //   adio.pause();
-  //     //   matchSoundEffect.play();
-  //     //   setTimeout(playBkMusic, 2500);
-  //     // } else {
-  //     //   matchSoundEffect.play();
-  //     // }
-  //     // flipNumbersP1++;
-  //     // scoreP1 = flipNumbersP1 * initValue;
-  //     // console.log("Correct Numbers Player 1= ", flipNumbersP1);
-  //     // console.log("Score During the Game P1= ", scoreP1);
-  //   } else {
-  //     unflipCards();
-  //   }
-  //   // isMatch ?  disableCards() :  unflipCards();
-  //   checkIfWon();
-  // }
+    
+      if(checkPlayersTurn == true){
+        let p1 = document.querySelectorAll("#player1_board .memory-card");
+        let p2 = document.querySelectorAll("#player2_board .memory-card");
+      p1.forEach(function(m){
+        if(!m.classList.contains("flip")){
+          cards.push(m);
+        }
+      });
+      p2.forEach(function(m){
+        if(!m.classList.contains("flip")){
+          cards_p2.push(m);
+        }
+      });
+      // for(var i = 0; i < cards.length; i++){
+      //   console.log(cards[i]);
+      // }
+      // for(var i = 0; i < cards_p2.length; i++){
+      //   console.log(cards_p2[i]);
+      // }
+      p2.forEach(card => card.removeEventListener("click", flipCard_p2))
+      checkPlayersTurn = false;
+      cards.forEach(card => card.addEventListener("click", flipCard))
 
+      setTimeout(function(){
+        player2_board.style.borderStyle = "none";
+        player2_board.style.removeProperty("animation");
+        player1_frame.style.animation = "mymove 2s infinite"; 
+        player1_frame.style.borderStyle = "solid";
+
+      }, 1000)
+    }
+    }
+  
+  }
+
+ 
   function playBkMusic(){
     adio.play();
   }
@@ -288,7 +310,7 @@ function flipCard_p2(){
   function checkForMatchP1(){
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
     if (isMatch) {
-      disableCards();
+       disableCards();
       if (checkBox.checked == true) {
         adio.pause();
         matchSoundEffect.play();
@@ -303,7 +325,6 @@ function flipCard_p2(){
     } else {
       unflipCards();
     }
-    // isMatch ?  disableCards() :  unflipCards();
     checkIfWon();
   }
   
@@ -355,8 +376,7 @@ function unflipCards(){
 }
 
  function checkIfWon(){
- 
-  let won = document.getElementById("won");
+   let won = document.getElementById("won");
    if(wonFlag == false){
     let getFlipped = document.querySelectorAll("#player1_board .flip");
     let getFlipped_p2 = document.querySelectorAll("#player2_board .flip");
@@ -364,15 +384,13 @@ function unflipCards(){
     let getCards = document.querySelectorAll("#player1_board .memory-card")
     let getCards_p2 = document.querySelectorAll("#player2_board .memory-card")
     if(getFlipped.length == getCards.length){
-      cards_1.forEach(card => card.removeEventListener("click", flipCard));
-      cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));
        wonFlag = true;
-       console.log("Player 1 won the game");
        won.textContent = "Player 1 won";
        document.getElementById("won").style.display = "inline";
-       console.log("p1 won");
        player1_board.style.borderStyle = "none";
        player1_board.style.removeProperty("animation");
+       player2_board.style.borderStyle = "none";
+       player2_board.style.removeProperty("animation");
        if (checkBox.checked == true) {
         adio.pause();
         winningSoundEffect.play();
@@ -388,8 +406,6 @@ function unflipCards(){
       }
     }
     else if(getFlipped_p2.length == getCards_p2.length){
-      cards_1.forEach(card => card.removeEventListener("click", flipCard));
-      cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));
         wonFlag = true;
         won.textContent = "Player 2 won";
         document.getElementById("won").style.display = "inline";
@@ -411,9 +427,10 @@ function unflipCards(){
         }
     }
   }
+    console.log(wonFlag);
     return wonFlag;
 
-   }
+  }
  
 
  function updateCountdown(){
@@ -430,9 +447,6 @@ function unflipCards(){
         won.textContent = "Player 2 won!!";
         document.getElementById("won").style.display = "inline";
         console.log("p2 won");
-
-      
-
       }
       else if(scoreP1 > scoreP2){
         won.textContent = "Player 1 won!!";
@@ -462,8 +476,8 @@ function unflipCards(){
    if(ifWon){
       clearInterval(timer);
       checkIfWon();
-      cards_1.forEach(card => card.removeEventListener("click", flipCard));
-      cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));  
+       cards_1.forEach(card => card.removeEventListener("click", flipCard));
+       cards_2.forEach(card => card.removeEventListener("click", flipCard_p2));  
       player2_board.style.borderStyle = "none";
       player2_board.style.removeProperty("animation");
       player1_board.style.borderStyle = "none";
