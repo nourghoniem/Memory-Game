@@ -75,9 +75,7 @@ function addCards(){
     divp2.appendChild(front_img_p2);
     divp2.appendChild(back_img_p2);
     front_images.push(front_img);
-    //front_images_hard.push(front_img);
     front_images_p2.push(front_img_p2);
-    //front_images_p2_hard.push(front_img_p2);
    }
    for(var i=0; i<2; i++){
      divs[i].setAttribute("data-framework","flame")
@@ -197,7 +195,7 @@ function checking(){
 function flipCard(){
   let cards = [];
   let cards_p2 = [];
- 
+  
   if(lockBoard) return;
   if(this === firstCard) return;
   this.classList.toggle("flip");
@@ -210,6 +208,7 @@ function flipCard(){
     checkForMatchP1();
     console.log("two cards flipped");
     checkPlayersTurn == false
+  
   
   if(checkPlayersTurn == false){
       let p1 = document.querySelectorAll("#player1_board .memory-card");
@@ -224,12 +223,7 @@ function flipCard(){
           cards_p2.push(m);
         }
       });
-      // for(var i = 0; i < cards.length; i++){
-      //   console.log(cards[i]);
-      // }
-      // for(var i = 0; i < cards_p2.length; i++){
-      //   console.log(cards_p2[i]);
-      // }
+    
       cards.forEach(card => card.removeEventListener("click", flipCard))
       checkPlayersTurn = true;
       cards_p2.forEach(card => card.addEventListener("click", flipCard_p2))
@@ -249,6 +243,7 @@ function flipCard(){
 function flipCard_p2(){
   let cards = [];
   let cards_p2 = [];
+ 
   
     if(lockBoard) return;
     if(this === firstCard) return;
@@ -263,6 +258,7 @@ function flipCard_p2(){
       checkForMatchP2();
       console.log("two cards flipped");
       console.log(checkPlayersTurn);
+     
     
       if(checkPlayersTurn == true){
         let p1 = document.querySelectorAll("#player1_board .memory-card");
@@ -338,7 +334,7 @@ function flipCard_p2(){
     } else {
       unflipCards();
     }
-    // isMatch ?  disableCards() :  unflipCards();
+  
     checkIfWon();
   }
 
@@ -372,13 +368,9 @@ function unflipCards(){
    if(wonFlag == false){
     let getFlipped = document.querySelectorAll("#player1_board .flip");
     let getFlipped_p2 = document.querySelectorAll("#player2_board .flip");
-    //console.log(getFlipped);
     let getCards = document.querySelectorAll("#player1_board .memory-card")
     let getCards_p2 = document.querySelectorAll("#player2_board .memory-card")
     if(getFlipped.length == getCards.length){
-      //checkPlayersTurn = " "
-      getCards.forEach(card => card.removeEventListener("click", flipCard));
-      getCards_p2.forEach(card => card.removeEventListener("click", flipCard_p2));
        wonFlag = true;
        won.textContent = "Player 1 won";
        document.getElementById("won").style.display = "inline";
@@ -386,8 +378,9 @@ function unflipCards(){
        player1_board.style.removeProperty("animation");
        player2_board.style.borderStyle = "none";
        player2_board.style.removeProperty("animation");
-    
-     
+       getCards_p2.forEach(card => card.removeEventListener("click", flipCard_p2));
+       getCards.forEach(card => card.removeEventListener("click", flipCard));
+       checkPlayersTurn = null;
        if (checkBox.checked == true) {
         adio.pause();
         winningSoundEffect.play();
@@ -403,16 +396,16 @@ function unflipCards(){
       }
     }
     else if(getFlipped_p2.length == getCards_p2.length){
-       getCards.forEach(card => card.removeEventListener("click", flipCard));
-       getCards_p2.forEach(card => card.removeEventListener("click", flipCard_p2));
+
         wonFlag = true;
         won.textContent = "Player 2 won";
         document.getElementById("won").style.display = "inline";
-        console.log("p2 won");
         player2_board.style.borderStyle = "none";
         player2_board.style.removeProperty("animation");
-       
-        checkPlayersTurn = " "
+        getCards.forEach(card => card.removeEventListener("click", flipCard));
+        getCards_p2.forEach(card => card.removeEventListener("click", flipCard_p2));
+        checkPlayersTurn = null;
+      
         if (checkBox.checked == true) {
           adio.pause();
           winningSoundEffect.play();
@@ -468,6 +461,7 @@ function unflipCards(){
       }
       cardswe.forEach(card => card.removeEventListener("click", flipCard));
       cardswe2.forEach(card => card.removeEventListener("click", flipCard_p2));
+      checkPlayersTurn = null;
       player2_board.style.borderStyle = "none";
       player2_board.style.removeProperty("animation");
       player1_board.style.borderStyle = "none";
@@ -479,6 +473,7 @@ function unflipCards(){
       checkIfWon();
       cardswe.forEach(card => card.removeEventListener("click", flipCard));
       cardswe2.forEach(card => card.removeEventListener("click", flipCard_p2));
+      checkPlayersTurn = null;
       player2_board.style.borderStyle = "none";
       player2_board.style.removeProperty("animation");
       player1_board.style.borderStyle = "none";
